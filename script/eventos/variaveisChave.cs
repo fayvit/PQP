@@ -1,0 +1,124 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public static class variaveisChave {
+
+	public static Dictionary<string,bool> shift = 
+		new Dictionary<string,bool>()
+		{
+			{"comprouEstatuaPiramide",false},
+			{"primeraConversaChaveComSadol",false},
+			{"adiciona O Criature",false},
+			{"HUDItens",false},
+			{"HUDCriatures",false},
+			{"alternaParaCriature",false},
+			{"TrocaGolpes",false},
+			{"comprouEstatuaDoAnubis",false},
+			{"colocouEstatuaDoAnubis",false},
+			{"falouComJander",false},
+			{"falouComMustaf",false},
+			{"falouComAramis",false},
+			{"lutouComAramis",false},
+
+		// Separando Baus
+
+			{"bauTeste",false},//colocar localizacao do Bau a frente
+			{"interiorPiramide1",false},//piramide andar 1 corredor Sudoeste da entrada
+			{"interiorPiramide2",false},//andar 1 primeiro corredor leste
+			{"interiorPiramide3",false},// 908 - 95 - 1221
+			{"interiorPiramide4",false},//922 - 95 - 1351
+			{"interiorPiramide5",false},//922 - 95 - 1329
+			{"interiorPiramide6",false},//798 - 95 - 1332
+			{"interiorPiramide7",false},//615 - 95 - 1297
+			{"interiorPiramide8",false},//1035 - 84 - 1285
+			{"interiorPiramide9",false},//899 - 84 - 1420
+			{"interiorPiramide10",false},//763 - 84 - 1114
+			{"interiorPiramide11",false},//615 - 95 - 1317
+			{"interiorPiramide12",false},//738 - 95 - 1437
+			{"interiorPiramide13",false},//735 - 95 - 1437
+			{"interiorPiramide14",false},//821 - 107 - 1457
+			{"interiorPiramide15",false},//707 - 107 - 1395
+			{"interiorPiramide16",false},//782 - 127 - 1081
+			{"interiorPiramide17",false},//681 - 127 - 1180
+			{"interiorPiramide18",false},//681 - 127 - 1186
+			{"interiorPiramide19",false},//681 - 127 - 1194
+			{"interiorPiramide20",false},//681 - 127 - 1200
+			{"interiorPiramide21",false},//657 - 140 - 1293 Atras do Mustaf :1
+			{"interiorPiramide22",false},//649 - 140 - 1293 Atras do Mustaf :2
+
+
+			{"lutaDeCantoPiramideUrkan",false},
+			{"lutaDeCantoPiramideIruin",false},
+			{"lutaDeCantoPiramideFlam",false},
+			{"lutaDeCantoPiramideOderc",false},
+			{"lutaDeCantoPiramideEscorpirey",false},
+			{"lutaDeCantoPiramideEscorpion",false},
+		
+		};
+	public static Dictionary<string,int> contadorChave = 
+		new Dictionary<string,int >()
+		{
+			{"vezesConversadasComSadol",0},
+			{"vezesTentandoComprarAnubis",0}
+		};
+
+	public static void valoresDefault()
+	{
+		List<string> k = new List<string>(shift.Keys);
+		foreach(string s in k)
+		{
+			shift[s] = false;
+		}
+
+		k = new List<string>(contadorChave.Keys);
+		foreach(string s in k)
+		{
+			contadorChave[s] = 0;
+		}
+
+		valoresDefaultDiferentes();
+	}
+
+	private static void valoresDefaultDiferentes()
+	{
+
+	}
+
+	public static void chavesDeJadme()
+	{
+		if(variaveisChave.shift["comprouEstatuaDoAnubis"])
+		{
+			GameObject.Find("ShopDeJadme").GetComponent<shopBasico>().aVenda.RemoveAt(3);
+		}
+		
+		if(variaveisChave.shift["colocouEstatuaDoAnubis"])
+		{
+			GameObject.Find("baseDaEstatua").GetComponent<colocarEstatuaDoAnubis>().LigaEstatua();
+			GameObject G = GameObject.Find("EntradaDaPiramide");
+			G.GetComponent<MeshCollider>().enabled = true;
+			G.GetComponent<mudeCena>().enabled = true;
+		}
+	}
+
+	static void chavesDaPiramide()
+	{
+		if(variaveisChave.shift["falouComMustaf"])
+		{
+			GameObject.Find("MUsta_provisorio").SetActive(false);
+		}
+	}
+
+	public static void particularidadesDeCaregamento()
+	{
+		switch(Application.loadedLevelName)
+		{
+		case "planicieDeJadme":
+			chavesDeJadme();
+		break;
+		case "interiorDaPiramide":
+			chavesDaPiramide();
+		break;
+		}
+	}
+}
