@@ -123,6 +123,7 @@ public class movimentoBasico :comandos {
 			movimentoBasico mB = G.GetComponent<movimentoBasico>();
 			mB.enabled = true;
 			mB.pararOHeroi();
+			mB.podeAndar = true;
 		}
 		
 		if(daCam)

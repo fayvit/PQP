@@ -3,7 +3,7 @@ using System.Collections;
 
 public class pretoMorte : MonoBehaviour {
 
-	float lerp = 0;
+	private float lerp = 0;
 	public bool entrando = true;
 	// Use this for initialization
 	void Start () {

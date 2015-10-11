@@ -341,6 +341,9 @@ public class menuInTravel2 : MonoBehaviour {
 				retornaParaOrganizacao();
 			}
 		break;
+		case "limpaMIT":
+			limpaOMIT();
+		break;
 		}
 
 		acao = false;
@@ -609,36 +612,41 @@ public class menuInTravel2 : MonoBehaviour {
 
 		if(finalizaEmErro && retorno == null)
 		{
-			Menu[] menusX = GetComponents<Menu>();
-			foreach(Menu menu in menusX)
-			{
-				menu.fechaJanela();
-			}
-
-			mensagemBasica[] mensagens = GetComponents<mensagemBasica>();
-			foreach(mensagemBasica mensagem in mensagens)
-			{
-				mensagem.fechaJanela();
-			}
-
-			mensagemEmLuta[] mLs = GetComponents<mensagemEmLuta>();
-
-			foreach(mensagemEmLuta mL in mLs)
-			{
-				mL.fechaJanela();
-			}
-
-			painelStatus[] pS = GetComponents<painelStatus>();
-			foreach(painelStatus p in pS)
-			{
-				p.fechaJanela();
-			}
-
-			nomeMenu = "emEspera";
+			limpaOMIT();
 			Debug.LogWarning("Nulidade de Menus");
 		}
 
 		return retorno;
+	}
+
+	void limpaOMIT()
+	{
+		Menu[] menusX = GetComponents<Menu>();
+		foreach(Menu menu in menusX)
+		{
+			menu.fechaJanela();
+		}
+		
+		mensagemBasica[] mensagens = GetComponents<mensagemBasica>();
+		foreach(mensagemBasica mensagem in mensagens)
+		{
+			mensagem.fechaJanela();
+		}
+		
+		mensagemEmLuta[] mLs = GetComponents<mensagemEmLuta>();
+		
+		foreach(mensagemEmLuta mL in mLs)
+		{
+			mL.fechaJanela();
+		}
+		
+		painelStatus[] pS = GetComponents<painelStatus>();
+		foreach(painelStatus p in pS)
+		{
+			p.fechaJanela();
+		}
+
+		nomeMenu = "emEspera";
 	}
 
 	void escolhaStatus()

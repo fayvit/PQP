@@ -84,6 +84,7 @@ public class heroi : MonoBehaviour {
 		itens.Add (new item(nomeIDitem.pergaminhoDeFuga){estoque = 3});
 		itens.Add (new item(nomeIDitem.pergaminhoDePerfeicao){estoque = 3});
 		itens.Add (new item(nomeIDitem.pergSaida){estoque = 1});
+		itens.Add (new item(nomeIDitem.pergArmagedom){estoque = 3});
 	
 		//itens [0].estoque = 1;
 	

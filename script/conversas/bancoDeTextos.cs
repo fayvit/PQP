@@ -872,7 +872,7 @@ public class bancoDeTextos{
 					"Seiva",/*ID==10*/"Inseticida","Aura","Repolho com Ovo","Ventilador","Pilha",
 					/*ID==15*/"Gelo Seco","Pergaminho de Fuga","Segredo","Estatua Misteriosa",
 					"Cristais","Pergaminho de Perfeição","Antidoto","Amuleto da Coragem","Tônico",/*ID = 24*/
-					"Perg. Rajada de Agua","Pergaminho de Saída","Condecoração Alpha"
+					"Perg. Rajada de Agua","Pergaminho de Saída","Condecoração Alpha","Pergaminho de Armagedom"
 				}},
 				{"shopInfoItem",new List<string>()
 				{
@@ -902,7 +902,8 @@ public class bancoDeTextos{
 					" O Tônico cura Criatures paralisados",
 					" O pergaminho de Rajada de Agua ajuda um Criature do tipo Agua a aprender o golpe Rajada de Agua",
 					" Pode ser usado em lugares fechado para te teletransportar para fora",
-					" A condecoração que Cesar Corean recebeu do Capitão Atos Aramis."
+					" A condecoração que Cesar Corean recebeu do Capitão Atos Aramis.",
+					" O pergaminho de Armagedom te teletransporta para o último Armagedom que você entrou desde que esteja em local aberto"
 				}},
 				{"entradinhaPlus",new List<string>()
 				{

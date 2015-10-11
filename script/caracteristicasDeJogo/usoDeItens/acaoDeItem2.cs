@@ -56,6 +56,7 @@ public class acaoDeItem2 : abaixoDeMenu {
 			perguntaQuem("golpe");
 		break;
 		case nomeIDitem.pergSaida:
+		case nomeIDitem.pergArmagedom:
 			perguntaTemCerteza();
 		break;
 		default:
@@ -87,7 +88,17 @@ public class acaoDeItem2 : abaixoDeMenu {
 		menu.destaque = destaque;
 
 		acaoAtual = "respondendoSimOuNao";
-		proxAcao = "usarSaida";
+
+		switch(nomeItem)
+		{
+		case nomeIDitem.pergArmagedom:
+			proxAcao = "usarArmagedom";
+		break;
+		case nomeIDitem.pergSaida:
+			proxAcao = "usarSaida";
+		break;
+		}
+
 	}
 
 	Menu retornaMenu(string nome)
@@ -610,6 +621,30 @@ public class acaoDeItem2 : abaixoDeMenu {
 		}
 	}
 
+	void verificaUsoDePergArmagedom()
+	{
+		encontros E = GameObject.Find("Terrain").GetComponent<encontros>();
+		
+		if(E.saidas.Count==0)
+		{			
+			pergaminhoDeArmagedom pergA =  gameObject.AddComponent<pergaminhoDeArmagedom>();
+			pergA.C = Color.red;
+			pergA.H = H;
+			acaoAtual = "";
+			retiraItem (nomeItem,1,H);
+			estadoPublico = "limpaMIT";
+			escondeTodosMenus();
+			movimentoBasico.pararFluxoHeroi();
+			Destroy(this,10f);
+			acaoAtual = "";
+		}else
+		{
+			acaoAtual = "naoUsar";
+			proxAcao = "naoUsarAberta";
+			mensCorrente = textos[9];
+		}
+	}
+
 	void verificaUsoDeSaida()
 	{
 		encontros E = GameObject.Find("Terrain").GetComponent<encontros>();
@@ -768,6 +803,10 @@ public class acaoDeItem2 : abaixoDeMenu {
 		
 		case "usarSaida":
 			verificaUsoDeSaida();
+		break;
+		
+		case "usarArmagedom":
+			verificaUsoDePergArmagedom();
 		break;
 
 		case "naoUsarAberta":

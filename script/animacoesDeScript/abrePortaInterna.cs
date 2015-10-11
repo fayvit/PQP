@@ -49,7 +49,7 @@ public class abrePortaInterna : MonoBehaviour {
 		if(estaAberta)
 		{
 			tempoComPortaAberta+=Time.deltaTime;
-			if(tempoComPortaAberta>0.5f)
+			if(tempoComPortaAberta>5f)
 			{
 				if(!estouFechandoAPorta(transform,baseDaPorta,1,dir))
 				{
@@ -74,13 +74,20 @@ public class abrePortaInterna : MonoBehaviour {
 
 	static Vector3 vetorComparavel(Transform T,int deComparacao,int dir)
 	{
+		/*
+			Apliquei a funçao estouAbrindoAPOrta em dois blocos 
+			que tinham o forward apontando para direçoes diferentes
+			entao precisei saber com qual vetor comparar para parar o giro
+		 */
+
+
 		Vector3 retorno = T.up;
 		
 		switch(deComparacao)
 		{
 		case 0:
-			retorno = T.up; 
-			break;
+			retorno = T.forward; 
+		break;
 		case 1:
 			retorno = dir*T.forward;
 		break;
@@ -92,7 +99,9 @@ public class abrePortaInterna : MonoBehaviour {
 	public static bool estouAbrindoAPorta(Transform porta,Transform baseDaPorta,int deComparacao = 0,int dir = 1)
 	{
 		Vector3 V = porta.position-4*Vector3.up;
-		
+		Vector3 comparavel = vetorComparavel(porta,deComparacao,dir);
+
+		if(((int)Vector3.Angle(comparavel,Vector3.up))%7==0)
 		for(int i = 0;i<5;i++)
 		{
 			Destroy(Instantiate(
@@ -107,7 +116,7 @@ public class abrePortaInterna : MonoBehaviour {
 				),2);
 		}
 
-		Vector3 comparavel = vetorComparavel(porta,deComparacao,dir);
+
 		if(Vector3.Angle(comparavel,Vector3.up)>1)
 			porta.RotateAround(baseDaPorta.position,baseDaPorta.up,dir*25*Time.deltaTime);
 		else{

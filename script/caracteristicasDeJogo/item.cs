@@ -141,6 +141,10 @@ public class item {
 			estoque = 1;
 			valor = 0;
 		break;
+		case nomeIDitem.pergArmagedom:
+			nome = "Pergaminho de Armagedom";
+			valor = 750;
+			break;
 		default:
 //			Debug.Log("Item Default Carregado");
 			nome = "parangaricotirimirroaro";
@@ -189,5 +193,6 @@ public enum nomeIDitem
 	tonico,
 	pergDeRajadaDeAgua,
 	pergSaida,
-	condecoracaoAlpha
+	condecoracaoAlpha,
+	pergArmagedom
 }
