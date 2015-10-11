@@ -17,6 +17,8 @@ public class sigaOLider : MonoBehaviour {
 			caminhos = transform.GetComponent<NavMeshAgent> ();
 		if (GetComponent<Animator> ())
 						animator = GetComponent<Animator> ();
+
+
 	}
 	
 	// Update is called once per frame
@@ -27,6 +29,5 @@ public class sigaOLider : MonoBehaviour {
 		else
 			caminhos.destination = transform.position;
 		animator.SetFloat ("velocidade", caminhos.velocity.sqrMagnitude );
-	
 	}
 }

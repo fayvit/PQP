@@ -8,6 +8,7 @@ public class conversaEmJogo : MonoBehaviour {
 	public bool evento = false;
 	public mensagemBasica mens;
 	public float distanciaDeFala = 3;
+	public bool olheAoFalar = true;
 	
 	protected Transform tHeroi;
 	protected bool iniciou;
@@ -115,8 +116,11 @@ public class conversaEmJogo : MonoBehaviour {
 	{
 		mB.podeAndar = false;
 		mIT2.enabled = false;
-		if(caminhada){
+		if(caminhada)
 			caminhada.pareACaminhada();
+
+		if(olheAoFalar)
+		{
 			Vector3 olhe = new Vector3((tHeroi.position - transform.position).x,
 		                           0,
 		                           (tHeroi.position - transform.position).z);

@@ -70,6 +70,18 @@ public static class variaveisChave {
 		{"petrolifera13",false},//14.9 - 544.99 - 70.2 luta contra Escorpirey->5 perg. Perf.
 		{"petrolifera14",false},//-55.977 - 544.99 - 217.078
 		{"petrolifera15",false},//14.53 - 544.99 - 832.87
+		{"petrolifera16",false},//-681.65 - 544.99 - 1391.01
+		{"petrolifera17",false},//-157 - 544.99 - 1025 // luta contra Cabeçu
+		{"petrolifera18",false},//63 - 544.99 - 937 // luta contra Abutre
+		{"petrolifera19",false},//-288.3 - 544.99 - 1105.1 // luta contra Fajin
+		{"petrolifera20",false},//-107.9 - 544.99 - 1101 // luta contra Steal
+		{"petrolifera21",false},//-22.708 - 544.99 - 1347.91 // 6 antidoto
+		{"petrolifera22",false},//24.70359 - 544.99 - 1455.726 // 5 agua tonica
+		{"petrolifera23",false},//1041.931 - 544.99 - 1768.296 // 3 perg Perfeicao
+		{"petrolifera24",false},//843.24 - 544.99 - 1336.21 // 21 Cristais
+		{"petrolifera25",false},//897.41 - 544.99 - 1345.63 // 2 pilhas
+		{"petrolifera26",false},//241.1 - 544.99 - 1083.83 // 3 perg Fuga
+		{"petrolifera27",false},//1006.8 - 544.99 - 1019.3 // luta contra Nessei
 		
 		};
 	public static Dictionary<string,int> contadorChave = 

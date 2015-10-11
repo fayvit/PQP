@@ -786,6 +786,13 @@ public class bancoDeTextos{
 					"Depois de ensinar essa habilidade para alguns <color=cyan>Iziculos</color> eles começaram a cortar o metal da Petrolifera",
 					"Não sabemos o que fazer com esse problema!!"
 				}},
+				{"euBemQueAviseiPetrolifera",new List<string>()
+				{
+					"Olá Rapaz!! Eu sou um trabalhador da Petrolifera. \r\n Você que veio nos ajudar com o maluco dos insetos?",
+					"Estou com muito medo de continuar aqui!! Os insetos cortaram muitas vigas de metal na petrolifera.",
+					"Ocorreram muitos acidentes, partes do piso afundaram por falta de sustentação.",
+					"Se você vai continuar por ai tome muito cuidado com onde você pisa!!"
+				}},
 				{"entrarNoCruzador",new List<string>()
 				{
 					"O Cruzador de Guerra está aberto para visitações.",

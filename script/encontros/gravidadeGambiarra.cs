@@ -26,5 +26,11 @@ public class gravidadeGambiarra : MonoBehaviour {
 	*/
 
 		controle.Move(Vector3.down*9.8f*Time.deltaTime);
+
+		if(controle.isGrounded)
+		{
+			GetComponent<Animator>().SetBool("noChao",true);
+			Destroy(this);
+		}
 	}
 }

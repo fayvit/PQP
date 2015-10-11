@@ -4,6 +4,7 @@ using System.Collections;
 public class transporteInterno : MonoBehaviour {
 
 	public Vector3 posAlvo;
+	public Color corDoFade = Color.black;
 
 	private bool iniciou = false;
 	private faseDoTransporte fase;
@@ -22,6 +23,17 @@ public class transporteInterno : MonoBehaviour {
 	void Start () {
 	
 	}
+
+	protected virtual void iniciandoTransporte()
+	{
+		p.entrando = false;
+		T.position = posAlvo;//(new melhoraPos()).novaPos(posAlvo);
+		movimentoBasico.pararFluxoHeroi(true,false);
+		fase = faseDoTransporte.retornando;
+		tempoDeCorrido = 0;
+		Destroy(GameObject.Find("CriatureAtivo"));
+		T.GetComponent<movimentoBasico>().adicionaOCriature();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,14 +46,8 @@ public class transporteInterno : MonoBehaviour {
 			case faseDoTransporte.iniciando:
 				if(tempoDeCorrido>1.5f)
 				{
-					p.entrando = false;
-					T.position = posAlvo;//(new melhoraPos()).novaPos(posAlvo);
-					movimentoBasico.pararFluxoHeroi(true,false);
-					fase = faseDoTransporte.retornando;
-					tempoDeCorrido = 0;
-					Destroy(GameObject.Find("CriatureAtivo"));
-					T.GetComponent<movimentoBasico>().adicionaOCriature();
 
+					iniciandoTransporte();
 				}
 			break;
 			case faseDoTransporte.retornando:
@@ -64,7 +70,13 @@ public class transporteInterno : MonoBehaviour {
 			iniciou = true;
 			movimentoBasico.pararFluxoHeroi(true,false,true,false);
 			p = gameObject.AddComponent<pretoMorte>();
+			p.cor = corDoFade;
 			T = col.transform;
+		}
+
+		if(col.tag=="Criature" && !heroi.emLuta)
+		{
+			col.GetComponent<alternancia>().retornaAoHeroi();
 		}
 	}
 }

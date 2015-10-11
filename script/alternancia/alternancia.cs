@@ -143,6 +143,7 @@ public class alternancia : MonoBehaviour {
 		
 		GetComponent<sigaOLider> ().enabled = true;
 		GetComponent<NavMeshAgent> ().enabled = true;
+
 		
 		movimentoBasico meuMovedor = GetComponent<movimentoBasico> ();
 
@@ -150,12 +151,15 @@ public class alternancia : MonoBehaviour {
 		if(mIT2)
 			mIT2.enabled = true;
 
+
+
 		vidaEmLuta v = GameObject.Find("Terrain") .GetComponent<vidaEmLuta> ();
 		if(v)
 			v.fechaJanela();
 
 
 		Destroy (meuMovedor);
+		GetComponent<Animator>().SetBool("noChao",true);
 	}
 
 	public void aoCriature()
@@ -164,6 +168,7 @@ public class alternancia : MonoBehaviour {
 			//umCriature criature = GetComponent<umCriature>();
 
 			GameObject heroiX = GameObject.FindGameObjectWithTag ("Player");
+			heroiX.AddComponent<gravidadeGambiarra>();
 			Criature X = heroiX.GetComponent<heroi>().criaturesAtivos[0];
 			movimentoBasico mB = heroiX.GetComponent<movimentoBasico> ();
 
