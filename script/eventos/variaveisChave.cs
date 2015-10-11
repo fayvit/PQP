@@ -54,6 +54,22 @@ public static class variaveisChave {
 			{"lutaDeCantoPiramideOderc",false},
 			{"lutaDeCantoPiramideEscorpirey",false},
 			{"lutaDeCantoPiramideEscorpion",false},
+
+		{"petrolifera1",false},//898 - 544 - 875 
+		{"petrolifera2",false},//241.19 - 544.99 - 728 
+		{"petrolifera3",false},//241.19 - 544.99 - 741
+		{"petrolifera4",false},//770 - 544.99 - 31.47
+		{"petrolifera5",false},//776 - 544.99 - 31.47
+		{"petrolifera6",false},//782 - 544.99 - 31.47
+		{"petrolifera7",false},//375. - 544.99 - 213.74
+		{"petrolifera8",false},//-596 - 544.99 - 363.74
+		{"petrolifera9",false},//-596 - 544.99 - 369
+		{"petrolifera10",false},//-542.508 - 544.99 - 287.877
+		{"petrolifera11",false},//-385.27 - 544.99 - 290.16 luta contra Nessei
+		{"petrolifera12",false},//-385.27 - 544.99 - 290.16 luta contra Urkan
+		{"petrolifera13",false},//14.9 - 544.99 - 70.2 luta contra Escorpirey->5 perg. Perf.
+		{"petrolifera14",false},//-55.977 - 544.99 - 217.078
+		{"petrolifera15",false},//14.53 - 544.99 - 832.87
 		
 		};
 	public static Dictionary<string,int> contadorChave = 
