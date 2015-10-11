@@ -86,7 +86,7 @@ public class abrePortaInterna : MonoBehaviour {
 		switch(deComparacao)
 		{
 		case 0:
-			retorno = T.forward; 
+			retorno = T.up; 
 		break;
 		case 1:
 			retorno = dir*T.forward;
@@ -118,7 +118,8 @@ public class abrePortaInterna : MonoBehaviour {
 
 
 		if(Vector3.Angle(comparavel,Vector3.up)>1)
-			porta.RotateAround(baseDaPorta.position,baseDaPorta.up,dir*25*Time.deltaTime);
+			porta.RotateAround(baseDaPorta.position,
+			  (deComparacao==0)?-baseDaPorta.forward : baseDaPorta.up,dir*25*Time.deltaTime);
 		else{
 			return false;
 		}
