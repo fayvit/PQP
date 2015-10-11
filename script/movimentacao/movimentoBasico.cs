@@ -90,14 +90,15 @@ public class movimentoBasico :comandos {
 		}
 	}
 
-	public static void pararFluxoHeroi(bool mit = true,bool daCam = true,bool doMB = true)
+	public static void pararFluxoHeroi(bool mit = true,bool daCam = true,bool doMB = true,bool parar = true)
 	{
 		GameObject G = GameObject.FindWithTag("Player");
 		if(doMB)
 		{
 			movimentoBasico mB = G.GetComponent<movimentoBasico>();
 			mB.enabled = false;
-			mB.pararOHeroi();
+			if(parar)
+				mB.pararOHeroi();
 		}
 
 		if(daCam)
