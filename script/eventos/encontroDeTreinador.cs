@@ -11,6 +11,7 @@ public class encontroDeTreinador : encontros {
 	private animaEnvia aE;
 	private animaTroca aT;
 	private int indiceDoProx = 0;
+	private string[] textos;
 
 	protected Vector3 posInicialTreinador;
 	protected encontros e;
@@ -38,12 +39,15 @@ public class encontroDeTreinador : encontros {
 	{
 
 		e = GameObject.Find("Terrain").GetComponent<encontros>();
-		e.enabled = false;
+		if(e)
+			e.enabled = false;
 		heroi.contraTreinador = true;
 		base.Start();
 		posHeroi = tHeroi.position;
 		aDoTreinador = tTreinador.GetComponent<Animator>();
 		posInicialTreinador = tTreinador.position;
+
+		textos = bancoDeTextos.falacoes[heroi.lingua]["encontrosTreinador"].ToArray();
 	}
 
 	new void Update()
@@ -65,7 +69,7 @@ public class encontroDeTreinador : encontros {
 			{
 				alternancia.olharEmLuta(tTreinador);
 				mens = Camera.main.gameObject.AddComponent<mensagemBasica>();
-				mens.mensagem = "Nessa luta eu irei usar 4 Criatures";
+				mens.mensagem = string.Format(textos[0],encontraveis.Count);
 			}else
 			{
 				if(botoesPrincipais())
@@ -80,7 +84,7 @@ public class encontroDeTreinador : encontros {
 			if(tempoDecorrido>0.15f)
 			{
 				mens = Camera.main.gameObject.AddComponent<mensagemBasica>();
-				mens.mensagem = "meu primeiro Criature sera...";
+				mens.mensagem = textos[1];
 				enviaOProximo();
 				fase = faseDoEncontroTreinador.fechaMens;
 				tempoDecorrido = 0;
@@ -116,7 +120,7 @@ public class encontroDeTreinador : encontros {
 				foiApresentado = false;
 				enviaOProximo();
 				tempoDecorrido = 0;
-				mens.mensagem = "Meu proximo Criature sera...";
+				mens.mensagem = textos[2];
 				Invoke("voltaMens",0.15f);
 				fase = faseDoEncontroTreinador.fechaMens;
 			}

@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class conversaComAramis : conversaComMustaf {
-
-
-
-	private readonly Dictionary<int,string> trocaTitulo = new Dictionary<int, string>()
+	
+	protected Dictionary<int,string> trocaTitulo = new Dictionary<int, string>()
 	{
 		{1,"\t\t\t <color=cyan>Cesar Corean</color>"},
 		{2,""},
@@ -22,12 +20,11 @@ public class conversaComAramis : conversaComMustaf {
 	{
 		iniciando,
 		aproximandoDoMustaf,
-		respostaDeConfornto,
-		diminuindoNeblina
+		respostaDeConfornto
 	}
 
 	// Use this for initialization
-	void Start () {
+	protected virtual void Start () {
 		essaConversa = bancoDeTextos.falacoes[heroi.lingua][indiceDaConversa];
 	}
 	
@@ -81,21 +78,13 @@ public class conversaComAramis : conversaComMustaf {
 				{
 					if(menu.escolha == 0)// isso e um sim
 					{
-						encontroDeTreinador edT = gameObject.AddComponent<lutaContraAramis>();
-						edT.encontraveis = new List<encontravelTreinador>()
-						{
-							new encontravelTreinador(nomesCriatures.Oderc,10,1),
-							new encontravelTreinador(nomesCriatures.Flam,10,1),
-							new encontravelTreinador(nomesCriatures.Urkan,10,1),
-							new encontravelTreinador(nomesCriatures.Escorpion,10,1)
-						};
-						edT.tTreinador = tConversador;
-						edT.nomeDoTreinador = "Atos Aramis";
+						iniciaLutaComTreinador();
 						encerraEste();
 
 					}else
 					{
-						e.enabled = true;
+						if(e)
+							e.enabled = true;
 						movimentoBasico.retornarFluxoHeroi();
 
 						encerraEste();
@@ -109,6 +98,20 @@ public class conversaComAramis : conversaComMustaf {
 	
 	}
 
+	protected virtual void iniciaLutaComTreinador()
+	{
+		encontroDeTreinador edT = gameObject.AddComponent<lutaContraAramis>();
+		edT.encontraveis = new List<encontravelTreinador>()
+		{
+			new encontravelTreinador(nomesCriatures.Oderc,10,1),
+			new encontravelTreinador(nomesCriatures.Flam,10,1),
+			new encontravelTreinador(nomesCriatures.Urkan,10,1),
+			new encontravelTreinador(nomesCriatures.Escorpion,10,1)
+		};
+		edT.tTreinador = tConversador;
+		edT.nomeDoTreinador = "Atos Aramis";
+	}
+
 	void encerraEste()
 	{
 		iniciou = false;
@@ -117,6 +120,7 @@ public class conversaComAramis : conversaComMustaf {
 		menu.fechaJanela();
 	}
 
+	/*
 	void OnTriggerEnter(Collider col)
 	{
 
@@ -131,7 +135,7 @@ public class conversaComAramis : conversaComMustaf {
 				esseCol.enabled = false;
 				esseCol.isTrigger = false;
 				iniciou = true;
-				variaveisChave.shift["falouComAramis"] = true;
+				variaveisChave.shift[variavelChave] = true;
 			}else if(!iniciou && col.tag == "Criature" && !heroi.emLuta)
 			{
 				alternancia a  = col.GetComponent<alternancia>();
@@ -140,5 +144,5 @@ public class conversaComAramis : conversaComMustaf {
 			}
 		}
 
-	}
+	}*/
 }

@@ -20,6 +20,7 @@ public static class variaveisChave {
 			{"falouComMustaf",false},
 			{"falouComAramis",false},
 			{"lutouComAramis",false},
+			{"falouComMalucoDosInsetos",false},
 
 		// Separando Baus
 

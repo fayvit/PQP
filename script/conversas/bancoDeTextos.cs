@@ -314,6 +314,12 @@ public class bancoDeTextos{
 					"Todos os Criatures de Cesar Corean foram derrotados. \r\n\r\n Cesar Corean deve agora retornar ao Armagedom para renovar as energias de seus Criatures e voltar para sua aventura",
 					"<color=red>OPS!</color> \r\n Você não tem PE suficiente."
 				}},
+				{"encontrosTreinador",new List<string>()
+				{
+					"Nessa luta eu irei usar {0} Criatures",
+					"meu primeiro Criature será...",
+					"meu proximo Criature será..."
+				}},
 				{"tentaCapturar",new List<string>()
 				{
 					" resistiu a tentativa de Captura.",
@@ -792,6 +798,17 @@ public class bancoDeTextos{
 					"Estou com muito medo de continuar aqui!! Os insetos cortaram muitas vigas de metal na petrolifera.",
 					"Ocorreram muitos acidentes, partes do piso afundaram por falta de sustentação.",
 					"Se você vai continuar por ai tome muito cuidado com onde você pisa!!"
+				}},
+				{"malucoDosINsetos",new List<string>()
+				{
+					"Você foi enviado por eles não é...??",
+					"Do que você está falando",
+					"Você foi enviado por aqueles que odeiam os meus insetos para eliminá-los e acabar comigo também não é...?",
+					"Então você é o maluco que está ensinando os Insetos a cortarem o metal da Petrolifera?",
+					"Os insetos são os únicos que me fazem companhia desde que fiquei confinado a trabalhar nesses porões",
+					"Eu só preciso que você me de o <color=cyan>pergaminho de Sabre</color> com o qual você ensina os insetos cortarem metal",
+					"Eu jamais lhe entregarei o pergaminho de Sabre sem lutar",
+					"Você está preparado para me enfrentar?"
 				}},
 				{"entrarNoCruzador",new List<string>()
 				{

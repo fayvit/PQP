@@ -135,7 +135,8 @@ public class conversaComMustaf : conversaEmJogo {
 	protected void preparaIniciaConversa()
 	{
 		e = GameObject.Find("Terrain").GetComponent<encontros>();
-		e.enabled = false;
+		if(e)
+			e.enabled = false;
 		movimentoBasico.pararFluxoHeroi();
 		p = gameObject.AddComponent<pretoMorte>();
 		tCam = Camera.main.transform;
