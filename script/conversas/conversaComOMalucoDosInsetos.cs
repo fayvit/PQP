@@ -20,6 +20,15 @@ public class conversaComOMalucoDosInsetos : conversaComAramis {
 
 	protected override void iniciaLutaComTreinador()
 	{
-		conversaComMalucoDosInsetosFora.iniciaLutaContraOMaluco(gameObject,tConversador);
+		encontroDeTreinador edT = gameObject.AddComponent<lutaContraAramis>();
+		edT.encontraveis = new List<encontravelTreinador>()
+		{
+			new encontravelTreinador(nomesCriatures.Oderc,10,1),
+			new encontravelTreinador(nomesCriatures.Flam,10,1),
+			new encontravelTreinador(nomesCriatures.Urkan,10,1),
+			new encontravelTreinador(nomesCriatures.Escorpion,10,1)
+		};
+		edT.tTreinador = tConversador;
+		edT.nomeDoTreinador = "Maluco dos Insetos";
 	}
 }

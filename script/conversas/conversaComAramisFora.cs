@@ -5,12 +5,6 @@ using System.Collections.Generic;
 public class conversaComAramisFora : MonoBehaviour {
 
 	public int indiceDoEvento;
-
-	public string indiceDaLuta = "lutouComAramis";
-	public string indiceDaConversa = "falouComAramis";
-	public string chaveDepoisDaDerrota = "AramisDepoisDeDerrotado";
-
-
 	private conversaEmJogo cJ;
 	private Menu menu;
 
@@ -18,15 +12,14 @@ public class conversaComAramisFora : MonoBehaviour {
 	void Start () {
 		cJ = GetComponent<conversaEmJogo>();
 
-		if(variaveisChave.shift[indiceDaLuta])
-			cJ.indiceDaConversa = chaveDepoisDaDerrota;
+		if(variaveisChave.shift["lutouComAramis"])
+			cJ.indiceDaConversa = "AramisDepoisDeDerrotado";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(cJ.mensagemAtual == indiceDoEvento && !variaveisChave.shift[indiceDaLuta])
+		if(cJ.mensagemAtual == indiceDoEvento && !variaveisChave.shift["lutouComAramis"])
 		{
-			variaveisChave.shift[indiceDaConversa] = true;
 			if(cJ.evento == false)
 			{
 				cJ.evento = true;
@@ -48,39 +41,28 @@ public class conversaComAramisFora : MonoBehaviour {
 				{
 				case 0:
 
-					iniciandoContraTreinador();
+					encontroDeTreinador edT = gameObject.AddComponent<lutaContraAramis>();
+					edT.encontraveis = new List<encontravelTreinador>()
+					{
+						new encontravelTreinador(nomesCriatures.Oderc,10,1),
+						new encontravelTreinador(nomesCriatures.Flam,10,1),
+						new encontravelTreinador(nomesCriatures.Urkan,10,1),
+						new encontravelTreinador(nomesCriatures.Escorpion,10,1)
+					};
+					edT.tTreinador = transform;
+					edT.nomeDoTreinador = "Atos Aramis";
 					finalisaEsseEvento();
 				break;
 				case 1:
 					finalisaEsseEvento();
-
 				break;
 				}
 			}
 
-		}else if(!cJ.evento  && variaveisChave.shift[indiceDaLuta])
+		}else if(!cJ.evento  && variaveisChave.shift["lutouComAramis"])
 		{
-			cJ.atualizaIndiceDeConversa(chaveDepoisDaDerrota);
+			cJ.atualizaIndiceDeConversa("AramisDepoisDeDerrotado");
 		}
-	}
-
-	protected virtual void iniciandoContraTreinador()
-	{
-		iniciaLutaContraAramis(gameObject,transform);
-	}
-
-	public static void iniciaLutaContraAramis(GameObject G,Transform T)
-	{
-		encontroDeTreinador edT = G.AddComponent<lutaContraAramis>();
-		edT.encontraveis = new List<encontravelTreinador>()
-		{
-			new encontravelTreinador(nomesCriatures.Oderc,10,1),
-			new encontravelTreinador(nomesCriatures.Flam,10,1),
-			new encontravelTreinador(nomesCriatures.Urkan,10,1),
-			new encontravelTreinador(nomesCriatures.Escorpion,10,1)
-		};
-		edT.tTreinador = T;
-		edT.nomeDoTreinador = "Atos Aramis";
 	}
 
 	void finalisaEsseEvento()

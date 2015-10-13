@@ -97,29 +97,10 @@ public class cCriature {
 			X = new Urkan(nivel);
 		break;
 
-		case nomesCriatures.Baratarab:
-			X = new Baratarab(nivel);
-		break;
-
-		case nomesCriatures.DogMour:
-			X = new DogMour(nivel);
-		break;
-
 		}
 
 		if(X!=null)
 			X.nomeID = nome;
-
-		float sum = 0;
-		for(int i=0;i<5;i++)
-			sum+=X.cAtributos[i].Taxa;
-
-		if(sum!=1)
-		{
-			Debug.LogWarning("O Criature "+X.nomeID+" nao tem a soma das taxas igual a 1");
-		}
-
-
 		}
 		
 		public Criature criature()
@@ -157,7 +138,5 @@ public enum nomesCriatures
 	Croc,
 	Oderc,
 	Abutre,
-	Urkan,
-	Baratarab,
-	DogMour
+	Urkan
 }

@@ -35,7 +35,7 @@ public class heroi : MonoBehaviour {
 
 		Criature  P = null;
 
-		P = new cCriature  (nomesCriatures.Baratarab,8).criature ();
+		P = new cCriature  (nomesCriatures.Florest,7).criature ();
 		//P.cAtributos[0].Corrente = 20;
 		//P.mNivel.XP = 149;
 
@@ -52,7 +52,7 @@ public class heroi : MonoBehaviour {
 
 		criaturesAtivos.Add(P);
 
-		P = new cCriature (nomesCriatures.Urkan,8).criature ();
+		P = new cCriature (nomesCriatures.Urkan,5).criature ();
 
 		criaturesAtivos.Add(P);
 

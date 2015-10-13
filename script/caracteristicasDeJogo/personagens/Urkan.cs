@@ -46,7 +46,7 @@ public class Urkan:Criature {
 				
 				
 		cAtributos[0].Taxa = 0.20f;	//Pontos de Vida
-		cAtributos[1].Taxa = 0.22f;	//pontos de Energia
+		cAtributos[1].Taxa = 0.20f;	//pontos de Energia
 		cAtributos[2].Taxa = 0.24f;	//pontos de Poder
 		cAtributos[3].Taxa = 0.17f;	//pontos de Força
 		cAtributos[4].Taxa = 0.17f;	//pontos de Defesa

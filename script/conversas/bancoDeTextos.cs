@@ -810,24 +810,6 @@ public class bancoDeTextos{
 					"Eu jamais lhe entregarei o pergaminho de Sabre sem lutar",
 					"Você está preparado para me enfrentar?"
 				}},
-				{"MalucoConversado",new List<string>()
-				{
-					"Eu jamais lhe entregarei o pergaminho de Sabre sem lutar",
-					"Você está preparado para me enfrentar?"
-				}},
-				{"MalucoNoMOmentoDaDerrota",new List<string>()
-				{
-					"Não posso acreditar que você derrotou os meus bebes!!",
-					"Oh vida! Oh Deus! Oh azar!!",
-					"Pobre de mim que não posso nem mesmo treinar insetos para me fazer companhia...",
-					"Pois bem... Se é o desejo geral dos operarios e eu não tenho culhão para vencer uma simples batalha eu me rendo",
-					"Pegue o meu <color=cyan>Pergaminho de Sabre</color>",
-					"Vou ficar aqui confiando que você dará um bom uso para o pergaminho de sabre e terá um forte e poderoso inseto cortador no seu time de Criatures"
-				}},
-				{"malucoDepoisDeDerrotado",new List<string>()
-				{
-					"VOu ficar aqui confiando que você dará um bom uso para o pergaminho de sabre e terá um forte e poderoso inseto cortador no seu time de Criatures"
-				}},
 				{"entrarNoCruzador",new List<string>()
 				{
 					"O Cruzador de Guerra está aberto para visitações.",
@@ -914,7 +896,7 @@ public class bancoDeTextos{
 					"Seiva",/*ID==10*/"Inseticida","Aura","Repolho com Ovo","Ventilador","Pilha",
 					/*ID==15*/"Gelo Seco","Pergaminho de Fuga","Segredo","Estatua Misteriosa",
 					"Cristais","Pergaminho de Perfeição","Antidoto","Amuleto da Coragem","Tônico",/*ID = 24*/
-					"Perg. Rajada de Agua","Pergaminho de Saída","Condecoração Alpha","Pergaminho de Armagedom","Pergaminho de Sabre"
+					"Perg. Rajada de Agua","Pergaminho de Saída","Condecoração Alpha","Pergaminho de Armagedom"
 				}},
 				{"shopInfoItem",new List<string>()
 				{
@@ -945,8 +927,7 @@ public class bancoDeTextos{
 					" O pergaminho de Rajada de Agua ajuda um Criature do tipo Agua a aprender o golpe Rajada de Agua",
 					" Pode ser usado em lugares fechado para te teletransportar para fora",
 					" A condecoração que Cesar Corean recebeu do Capitão Atos Aramis.",
-					" O pergaminho de Armagedom te teletransporta para o último Armagedom que você entrou desde que esteja em local aberto",
-					"O pergaminho de Sabre ajuda um Criature a aprender o golpe Sabre"
+					" O pergaminho de Armagedom te teletransporta para o último Armagedom que você entrou desde que esteja em local aberto"
 				}},
 				{"entradinhaPlus",new List<string>()
 				{

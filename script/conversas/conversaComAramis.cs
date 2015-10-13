@@ -100,7 +100,16 @@ public class conversaComAramis : conversaComMustaf {
 
 	protected virtual void iniciaLutaComTreinador()
 	{
-		conversaComAramisFora.iniciaLutaContraAramis(gameObject,tConversador);
+		encontroDeTreinador edT = gameObject.AddComponent<lutaContraAramis>();
+		edT.encontraveis = new List<encontravelTreinador>()
+		{
+			new encontravelTreinador(nomesCriatures.Oderc,10,1),
+			new encontravelTreinador(nomesCriatures.Flam,10,1),
+			new encontravelTreinador(nomesCriatures.Urkan,10,1),
+			new encontravelTreinador(nomesCriatures.Escorpion,10,1)
+		};
+		edT.tTreinador = tConversador;
+		edT.nomeDoTreinador = "Atos Aramis";
 	}
 
 	void encerraEste()
@@ -110,4 +119,30 @@ public class conversaComAramis : conversaComMustaf {
 		mens.fechaJanela();
 		menu.fechaJanela();
 	}
+
+	/*
+	void OnTriggerEnter(Collider col)
+	{
+
+		if(variaveisChave.shift[variavelChave])
+			Destroy(gameObject);
+		else
+		{
+			if(!iniciou && col.tag == "Player")
+			{
+				preparaIniciaConversa();
+				Collider esseCol = GetComponent<Collider>();
+				esseCol.enabled = false;
+				esseCol.isTrigger = false;
+				iniciou = true;
+				variaveisChave.shift[variavelChave] = true;
+			}else if(!iniciou && col.tag == "Criature" && !heroi.emLuta)
+			{
+				alternancia a  = col.GetComponent<alternancia>();
+				if(a)
+					a.retornaAoHeroi();
+			}
+		}
+
+	}*/
 }

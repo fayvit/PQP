@@ -648,27 +648,20 @@ public class acaoDeItem2 : abaixoDeMenu {
 	void verificaUsoDeSaida()
 	{
 		encontros E = GameObject.Find("Terrain").GetComponent<encontros>();
-		if(E)
-		{
-			if(E.saidas.Count>0)
-			{
-				saidaDeCaverna S = E.saidas[0];
-				for(int i=0;i<E.saidas.Count;i++)
-				{
-					if(E.saidas[i].entreiPorAqui)
-						S = E.saidas[i];
-				}
 
-				pergaminhoDeSaida pergS =  gameObject.AddComponent<pergaminhoDeSaida>();
-				pergS.S = S;
-				acaoAtual = "";
-				retiraItem (nomeItem,1,H);
-			}else
+		if(E.saidas.Count>0)
+		{
+			saidaDeCaverna S = E.saidas[0];
+			for(int i=0;i<E.saidas.Count;i++)
 			{
-				acaoAtual = "naoUsar";
-				proxAcao = "naoUsarAberta";
-				mensCorrente = textos[9];
+				if(E.saidas[i].entreiPorAqui)
+					S = E.saidas[i];
 			}
+
+			pergaminhoDeSaida pergS =  gameObject.AddComponent<pergaminhoDeSaida>();
+			pergS.S = S;
+			acaoAtual = "";
+			retiraItem (nomeItem,1,H);
 		}else
 		{
 			acaoAtual = "naoUsar";

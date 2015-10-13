@@ -3,9 +3,6 @@ using System.Collections;
 
 public class lutaContraAramis : encontroDeTreinador {
 
-	public string chaveDaVitoria = "lutouComAramis";
-	public string chaveConversaDaVitoria = "AramisNoMOmentoDaDerrota";
-
 	private faseDaFinalisacao fase = faseDaFinalisacao.iniciando;
 	private conversaEmJogo cJ;
 
@@ -15,22 +12,11 @@ public class lutaContraAramis : encontroDeTreinador {
 		primeirasMensagens
 	}
 
-	protected virtual void atualizaChaves()
-	{
-		// Aramis ja inicia com suas chaves finais
-		// Essas funçao sera utilizados por treinadores que herdam esse comportamento
-
-		chaveDaVitoria = "lutouComAramis";
-		chaveConversaDaVitoria = "AramisNoMOmentoDaDerrota";
-	}
-
 	protected override void finalDeLuta()
 	{
 		switch(fase)
 		{
 		case faseDaFinalisacao.iniciando:
-
-			atualizaChaves();
 
 			tTreinador.position = posInicialTreinador;
 			tHeroi.position = posHeroi;
@@ -39,14 +25,14 @@ public class lutaContraAramis : encontroDeTreinador {
 			//Invoke("olharEmLUtaAtrasado",0.5f);
 			alternancia.olharEmLuta(tTreinador);
 			cJ = tTreinador.GetComponent<conversaEmJogo>();
-			variaveisChave.shift[chaveDaVitoria]  = true;
+			variaveisChave.shift["lutouComAramis"]  = true;
 			cJ.evento = true;
-			cJ.atualizaIndiceDeConversa(chaveConversaDaVitoria);
+			cJ.atualizaIndiceDeConversa("AramisNoMOmentoDaDerrota");
 			cJ.mensagemAtual = 0;
 			if(!cJ.mens)
 			{
 				cJ.mens = tTreinador.gameObject.AddComponent<mensagemBasica>();
-				cJ.mens.mensagem = bancoDeTextos.falacoes[heroi.lingua][chaveConversaDaVitoria][0];
+				cJ.mens.mensagem = bancoDeTextos.falacoes[heroi.lingua]["AramisNoMOmentoDaDerrota"][0];
 			}
 
 			cJ.verificaTrocaMens();
@@ -59,26 +45,25 @@ public class lutaContraAramis : encontroDeTreinador {
 				);
 		break;
 		case faseDaFinalisacao.primeirasMensagens:
-			if(cJ.mens)
+			if(cJ.mensagemAtual <  cJ.numeroDeMensagens-1)
 				cJ.verificaTrocaMens();
 			else
 			{
-				if(e)
-					e.enabled = true;
+				e.enabled = true;
 				cJ.finalisaConversa();
 				cJ.evento = false;
 				voltarParaPasseio();
-				recompensaDaVitoria();
+				GameObject.FindWithTag("Player")
+					.GetComponent<heroi>().itens.Add(new item(nomeIDitem.condecoracaoAlpha));
 				Destroy(this);
 			}
 		break;
 		}
 	}
 
-	protected virtual void recompensaDaVitoria()
+	void olharEmLUtaAtrasado()
 	{
-		GameObject.FindWithTag("Player")
-			.GetComponent<heroi>().itens.Add(new item(nomeIDitem.condecoracaoAlpha));
+		alternancia.olharEmLuta(tTreinador);
 	}
 
 }
