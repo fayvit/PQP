@@ -3,24 +3,24 @@ using UnityEngine;
 
 [System.Serializable]
 
-public class Urkan:Criature {
+public class DogMour:Criature {
 	
 	public readonly nivelGolpe[] listaGolpes = {
-		new nivelGolpe(1,nomesGolpes.psicose,0,1),
+		new nivelGolpe(1,nomesGolpes.bombaDeGas,0,1),
 		new nivelGolpe(1,nomesGolpes.garra,0,0.25f),
-		new nivelGolpe(2,nomesGolpes.bolaPsiquica,0,1),
-		new nivelGolpe(8,nomesGolpes.teletransporte,0,1.25f),
+		new nivelGolpe(2,nomesGolpes.rajadaDeGas,0,1),
+		new nivelGolpe(7,nomesGolpes.cortinaDeFumaca,0,1.25f)
 	};
 	
 	
-	public Urkan(uint nivel = 1)
+	public DogMour(uint nivel = 1)
 	{
-		psiquico carac = new psiquico ();
+		gas carac = new gas ();
 		
-		Nome = "Urkan";
+		Nome = "Dog Mour";
 		
 		meusTipos = new String[1];
-		meusTipos [0] = nomeTipos.Psiquico.ToString();
+		meusTipos [0] = nomeTipos.Gas.ToString();
 		
 		for(int cnt = 0; cnt < contraTipos.Length; cnt++)
 		{
@@ -29,11 +29,14 @@ public class Urkan:Criature {
 			contraTipos[cnt].Mod = carac._caracTipo[cnt].Mod;
 		}
 		
-		emissor = "Esqueleto/Bone/Bone_001/Bone_002/Bone_003/Bone_004";
+		emissor = "Esqueleto/Bone/Bone_001/Bone_002/Bone_003/Bone_004/Bone_005";
 
 		colisores[nomesGolpes.garra] = new colisor("Esqueleto/Bone/Bone_001/Bone_002/Bone_002_R/Bone_002_R_001/Bone_002_R_002",
 		                                 new Vector3(0.18f,0,0),
 		                                 new Vector3(-0.525f,-0.057f,-0.015f));
+		colisores[nomesGolpes.tosteAtaque] = new colisor("Esqueleto/Bone",
+		                                           new Vector3(0f,0,0),
+		                                           new Vector3(0f,0f,-0f));
 
 		/*****************
 		* 
@@ -45,10 +48,10 @@ public class Urkan:Criature {
 		*/
 				
 				
-		cAtributos[0].Taxa = 0.20f;	//Pontos de Vida
+		cAtributos[0].Taxa = 0.18f;	//Pontos de Vida
 		cAtributos[1].Taxa = 0.22f;	//pontos de Energia
-		cAtributos[2].Taxa = 0.24f;	//pontos de Poder
-		cAtributos[3].Taxa = 0.17f;	//pontos de Força
+		cAtributos[2].Taxa = 0.25f;	//pontos de Poder
+		cAtributos[3].Taxa = 0.18f;	//pontos de Força
 		cAtributos[4].Taxa = 0.17f;	//pontos de Defesa
 		
 		

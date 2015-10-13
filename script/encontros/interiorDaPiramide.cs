@@ -8,15 +8,15 @@ public class interiorDaPiramide: encontros {
 	{new List<encontravel>()// indice zero
 		{
 		
-			new encontravel(nomesCriatures.Rocketler,  1.1f,  7,10,1),
-			new encontravel(nomesCriatures.Cabecu,     1.4f,  7,10,1),
-			new encontravel(nomesCriatures.Iruin,      1.5f,  7,10,1),
+			new encontravel(nomesCriatures.Rocketler,  1f,  7,10,1),
+			new encontravel(nomesCriatures.Cabecu,     1f,  7,10,1),
+			new encontravel(nomesCriatures.Baratarab,  1.75f,  7,10,1),
 			new encontravel(nomesCriatures.Escorpion,  1.47f, 7,10,1),
-			new encontravel(nomesCriatures.Escorpirey, 1.25f, 7,10,1),
+			new encontravel(nomesCriatures.Escorpirey, 1f, 7,10,1),
 			new encontravel(nomesCriatures.Fajin,      0.5f,  7,10,1),
 			new encontravel(nomesCriatures.Abutre,     0.5f,  7,10,1),
 			new encontravel(nomesCriatures.Oderc,      0.5f,  7,10,1),
-			new encontravel(nomesCriatures.Rabitler,   1.25f, 7,10,1),
+			new encontravel(nomesCriatures.DogMour,    1.75f, 7,10,1),
 			new encontravel(nomesCriatures.Croc,       0.5f,  7,10,1),
 			new encontravel(nomesCriatures.Flam,       0.01f, 7,10,1),
 			new encontravel(nomesCriatures.Urkan,      0.02f, 7,10,1),

@@ -144,7 +144,11 @@ public class item {
 		case nomeIDitem.pergArmagedom:
 			nome = "Pergaminho de Armagedom";
 			valor = 750;
-			break;
+		break;
+		case nomeIDitem.pergSabre:
+			nome = "Pergaminho de Sabre";
+			valor = 755;
+		break;
 		default:
 //			Debug.Log("Item Default Carregado");
 			nome = "parangaricotirimirroaro";
@@ -194,5 +198,6 @@ public enum nomeIDitem
 	pergDeRajadaDeAgua,
 	pergSaida,
 	condecoracaoAlpha,
-	pergArmagedom
+	pergArmagedom,
+	pergSabre
 }

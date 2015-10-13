@@ -64,6 +64,8 @@ public class acaoDeGolpe : MonoBehaviour {
 		case nomesGolpes.anelDoOlhar:
 		case nomesGolpes.olharMal:
 		case nomesGolpes.olharParalisante:
+		case nomesGolpes.rajadaDeGas:
+		case nomesGolpes.bombaDeGas:
 			ataqueEmissor();
 		break;
 
@@ -103,6 +105,7 @@ public class acaoDeGolpe : MonoBehaviour {
 		break;
 
 		case nomesGolpes.cortinaDeTerra:
+		case nomesGolpes.cortinaDeFumaca:
 		case nomesGolpes.teletransporte:
 			desapareceAntesDoHit();
 		break;
@@ -255,11 +258,20 @@ public class acaoDeGolpe : MonoBehaviour {
 		case nomesGolpes.cortinaDeTerra:
 			apareceComHitNoChao("impactoDeTerra");
 		break;
+		case nomesGolpes.cortinaDeFumaca:
+			apareceComHitNoChao("impactoDeGas");
+		break;
 		case nomesGolpes.teletransporte:
 			apareceComHitNoChao();
 		break;
 		case nomesGolpes.sobreVoo:
 			sobreVooAtivo();
+		break;
+		case nomesGolpes.rajadaDeGas:
+			projetilPadrao("rigido","rajadaDeGas","impactoDeGas",25,2);
+		break;
+		case nomesGolpes.bombaDeGas:
+			projetilPadrao("basico","bombaDeGas","impactoDeGas",14);
 		break;
 		case nomesGolpes.cancelado:
 			umC.ataqueComPulo = false;
@@ -373,6 +385,8 @@ public class acaoDeGolpe : MonoBehaviour {
 					alvo.position,
 					Quaternion.identity),
 					10);
+
+				print(b+" : "+c);
 				if(b && c)
 					tomaDanoUm(alvo);
 			}
