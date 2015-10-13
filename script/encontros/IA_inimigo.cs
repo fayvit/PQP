@@ -22,6 +22,7 @@ public class IA_inimigo : comandos {
 	void Start () {
 		controle = GetComponent<CharacterController> ();
 		animator = GetComponent<Animator>();
+		animator.SetBool("noChao",true);
 		remendoDeBug();
 		
 		

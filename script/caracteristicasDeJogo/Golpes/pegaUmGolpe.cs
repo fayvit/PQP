@@ -143,6 +143,15 @@ public class pegaUmGolpe{
 		case nomesGolpes.sobreVoo:
 			G = new sobreVoo();
 		break;
+		case nomesGolpes.bombaDeGas:
+			G = new bombaDeGas();
+		break;
+		case nomesGolpes.rajadaDeGas:
+			G = new rajadaDeGas();
+		break;
+		case nomesGolpes.cortinaDeFumaca:
+			G = new cortinaDeFumaca();
+		break;
 		case nomesGolpes.nulo:
 		case nomesGolpes.cancelado:
 			G = new golpe();
@@ -207,5 +216,8 @@ public enum nomesGolpes
 	cortinaDeTerra,
 	teletransporte,
 	sobreVoo,
-	olharParalisante
+	olharParalisante,
+	bombaDeGas,
+	rajadaDeGas,
+	cortinaDeFumaca
 }
