@@ -104,6 +104,9 @@ public class cCriature {
 		case nomesCriatures.DogMour:
 			X = new DogMour(nivel);
 		break;
+		case nomesCriatures.Izicuolo:
+			X = new Izicuolo(nivel);
+		break;
 
 		}
 
@@ -159,5 +162,6 @@ public enum nomesCriatures
 	Abutre,
 	Urkan,
 	Baratarab,
-	DogMour
+	DogMour,
+	Izicuolo
 }

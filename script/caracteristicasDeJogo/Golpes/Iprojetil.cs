@@ -11,7 +11,7 @@ public abstract class Iprojetil: MonoBehaviour  {
 
 	protected void funcaoTrigger(Collider emQ)
 	{
-		if(emQ.gameObject != dono &&( emQ.name !="Terrain" || velocidadeProjetil>0)&&emQ.tag!="desvieCamera"){
+		if(emQ.gameObject != dono &&( emQ.tag != "cenario"|| velocidadeProjetil>0)&&emQ.tag!="desvieCamera"){
 			facaImpacto(emQ.gameObject);
 		}
 	}

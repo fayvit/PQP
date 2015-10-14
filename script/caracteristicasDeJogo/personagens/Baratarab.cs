@@ -78,8 +78,8 @@ public class Baratarab:Criature {
 		velocidadeDeRotacaoParado = 1.51f;
 		velocidadeDeRotacao = 2f;
 
-		alturaCamera = 5f;
-		distanciaCamera = 7f;
+		alturaCamera = 3.5f;
+		distanciaCamera = 6f;
 
 		Golpes = golpesAtivos (nivel,listaGolpes);  incrementaNivel(nivel);
 

@@ -945,7 +945,7 @@ public class bancoDeTextos{
 					" O pergaminho de Rajada de Agua ajuda um Criature do tipo Agua a aprender o golpe Rajada de Agua",
 					" Pode ser usado em lugares fechado para te teletransportar para fora",
 					" A condecoração que Cesar Corean recebeu do Capitão Atos Aramis.",
-					" O pergaminho de Armagedom te teletransporta para o último Armagedom que você entrou desde que esteja em local aberto",
+					" O pergaminho de Armagedom te teletransporta para o último Armagedom que você entrou. Você precisa estar em local aberto",
 					"O pergaminho de Sabre ajuda um Criature a aprender o golpe Sabre"
 				}},
 				{"entradinhaPlus",new List<string>()

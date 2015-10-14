@@ -152,6 +152,9 @@ public class pegaUmGolpe{
 		case nomesGolpes.cortinaDeFumaca:
 			G = new cortinaDeFumaca();
 		break;
+		case nomesGolpes.bastao:
+			G = new bastao();
+		break;
 		case nomesGolpes.nulo:
 		case nomesGolpes.cancelado:
 			G = new golpe();
@@ -159,7 +162,7 @@ public class pegaUmGolpe{
 		}
 
 		G.nomeID = nome;
-		G.TempoReuso = Mathf.Max(2.1f,G.TempoReuso);
+		G.TempoReuso = Mathf.Max(2.5f,G.TempoReuso);
 	}
 
 	public golpe OGolpe()
@@ -219,5 +222,6 @@ public enum nomesGolpes
 	olharParalisante,
 	bombaDeGas,
 	rajadaDeGas,
-	cortinaDeFumaca
+	cortinaDeFumaca,
+	bastao
 }

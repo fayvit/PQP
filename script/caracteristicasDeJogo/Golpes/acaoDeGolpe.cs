@@ -86,6 +86,7 @@ public class acaoDeGolpe : MonoBehaviour {
 		case nomesGolpes.tempestadeEletrica:
 		case nomesGolpes.chifre:
 		case nomesGolpes.avalanche:
+		case nomesGolpes.bastao:
 			impactoBasico(ativa.nomeID.ToString());
 		break;
 
@@ -272,6 +273,10 @@ public class acaoDeGolpe : MonoBehaviour {
 		break;
 		case nomesGolpes.bombaDeGas:
 			projetilPadrao("basico","bombaDeGas","impactoDeGas",14);
+		break;
+		case nomesGolpes.bastao:
+			//ataqueComSalto("chicoteDeCalda","cuboExtraTrail");
+			impactoAtivo(nomesGolpes.bastao,"umCuboETrailMaior");
 		break;
 		case nomesGolpes.cancelado:
 			umC.ataqueComPulo = false;
