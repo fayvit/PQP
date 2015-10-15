@@ -5,6 +5,13 @@ using UnityEngine;
 public class Izicuolo:Criature {
 
 	public readonly nivelGolpe[] listaGolpes = {
+
+		/* Golpes para aprender com pergaminhos */
+
+		new nivelGolpe(-1,nomesGolpes.sabreDeBastao,0,1),
+
+		/************************************************/
+
 		new nivelGolpe(1,nomesGolpes.gosmaDeInseto,0,1),
 		new nivelGolpe(1,nomesGolpes.bastao,0,0.75f),
 		new nivelGolpe(2,nomesGolpes.gosmaAcida,0,1),

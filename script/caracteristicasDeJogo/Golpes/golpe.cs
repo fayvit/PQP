@@ -93,6 +93,7 @@ public enum caracGolpe
 {
 	projetil,
 	colisao,
+	colisaoComPow,
 	area,
 	suporte,
 	projetilPerseguidor,

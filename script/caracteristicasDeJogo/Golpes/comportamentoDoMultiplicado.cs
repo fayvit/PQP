@@ -12,6 +12,8 @@ public class comportamentoDoMultiplicado : Iprojetil {
 
 	private float tempoAcumulado = 0;
 	private Criature C;
+	private IA_inimigo IA;
+	private movimentoBasico mB;
 
 
 
@@ -20,7 +22,35 @@ public class comportamentoDoMultiplicado : Iprojetil {
 		controle = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
 		C = dono.GetComponent<umCriature>().X;
+		if(dono.name=="inimigo")
+		{
+			IA = dono.GetComponent<IA_inimigo>();
+			mB = GameObject.Find("CriatureAtivo").GetComponent<movimentoBasico>();
+		}else
+		{
+			GameObject G = GameObject.Find("inimigo");
+			if(G)
+				IA = G.GetComponent<IA_inimigo>();
+			mB = dono.GetComponent<movimentoBasico>();
+		}
 		noImpacto = "impactoDeGosma";
+	}
+
+	bool podeAtualizar()
+	{
+		bool retorno = true;
+
+		if(mB)
+		{
+			if(IA)
+				retorno = (IA.podeAtualizar && IA.enabled)||(mB.podeAndar&&mB.enabled);
+		}else
+		{
+			if(IA && GameObject.Find("CriatureAtivo"))
+				mB = GameObject.Find("CriatureAtivo").GetComponent<movimentoBasico>();
+		}
+
+		return retorno;
 	}
 	
 	// Update is called once per frame
@@ -29,26 +59,28 @@ public class comportamentoDoMultiplicado : Iprojetil {
 		tempoAcumulado += Time.deltaTime;
 
 
-
-		if(!alvo)
-			direcaoMovimento = transform.forward;
-		else
+		if(podeAtualizar())
 		{
-			if(Vector3.Distance(transform.position,alvo.position)>2.5f)
+			if(!alvo)
+				direcaoMovimento = transform.forward;
+			else
 			{
-				direcaoMovimento =   Vector3.Slerp(direcaoMovimento,alvo.position-transform.position,0.9f*Time.deltaTime);
-				direcaoMovimento.Normalize();
-			}else
-				direcaoMovimento = (alvo.position-transform.position).normalized;
+				if(Vector3.Distance(transform.position,alvo.position)>2.5f)
+				{
+					direcaoMovimento =   Vector3.Slerp(direcaoMovimento,alvo.position-transform.position,0.9f*Time.deltaTime);
+					direcaoMovimento.Normalize();
+				}else
+					direcaoMovimento = (alvo.position-transform.position).normalized;
+			}
+
+			controle.Move(direcaoMovimento*velocidadeProjetil*Time.deltaTime);
+
+			animator.SetFloat("velocidade",controle.velocity.magnitude);
+
+			transform.rotation = Quaternion.Lerp(transform.rotation,
+			                                     Quaternion.LookRotation(direcaoMovimento),
+			                                     Time.deltaTime*5);
 		}
-
-		controle.Move(direcaoMovimento*velocidadeProjetil*Time.deltaTime);
-
-		animator.SetFloat("velocidade",controle.velocity.magnitude);
-
-		transform.rotation = Quaternion.Lerp(transform.rotation,
-		                                     Quaternion.LookRotation(direcaoMovimento),
-		                                     Time.deltaTime*5);
 		if(C.cAtributos[0].Corrente<=0)
 			meDestrua();
 

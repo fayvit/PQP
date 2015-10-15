@@ -13,6 +13,7 @@ public class transporteInterno : MonoBehaviour {
 	private Transform T;
 
 	private movimentoBasico mB;
+	private encontros e;
 
 	private enum faseDoTransporte
 	{
@@ -21,13 +22,21 @@ public class transporteInterno : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-	
+		e = GameObject.Find("Terrain").GetComponent<encontros>();
 	}
 
 	protected virtual void iniciandoTransporte()
 	{
 		p.entrando = false;
 		T.position = posAlvo;//(new melhoraPos()).novaPos(posAlvo);
+
+		if(e)
+		{
+			e.zeraPosAnterior();
+			e.enabled = true;
+		}
+
+
 		movimentoBasico.pararFluxoHeroi(true,false);
 		fase = faseDoTransporte.retornando;
 		tempoDeCorrido = 0;
@@ -46,7 +55,7 @@ public class transporteInterno : MonoBehaviour {
 			case faseDoTransporte.iniciando:
 				if(tempoDeCorrido>1.5f)
 				{
-
+					e.enabled = false;
 					iniciandoTransporte();
 				}
 			break;
@@ -68,6 +77,8 @@ public class transporteInterno : MonoBehaviour {
 		if(col.tag=="Player" && !heroi.emLuta  && !iniciou)
 		{
 			iniciou = true;
+			if(e)
+				e.enabled = false;
 			movimentoBasico.pararFluxoHeroi(true,false,true,false);
 			p = gameObject.AddComponent<pretoMorte>();
 			p.cor = corDoFade;

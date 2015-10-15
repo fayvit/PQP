@@ -162,6 +162,8 @@ public class IA_inimigo : comandos {
 			   (
 				noChao(C.distanciaFundamentadora+0.5f) 
 				||
+				C.Golpes[C.golpeEscolhido].CaracGolpe == caracGolpe.colisaoComPow
+				||
 				C.Golpes[C.golpeEscolhido].CaracGolpe == caracGolpe.colisao)
 			   )
 			{		

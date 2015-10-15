@@ -87,7 +87,7 @@ public class Criature : caracteristicasBasicas {
 		return retorno;
 	}
 
-	public nivelGolpe GolpeNaLista(nomesGolpes nomeDoGolpe)
+	public nivelGolpe GolpeNaLista(nomesGolpes[] nomeDoGolpe)
 	{
 		listaDeGolpes = new cCriature(nomeID).criature().listaDeGolpes;
 		
@@ -95,12 +95,22 @@ public class Criature : caracteristicasBasicas {
 		
 		
 		nivelGolpe retorno = new nivelGolpe(-1,nomesGolpes.nulo,0,0);
-		for(int i=0;i<listaDeGolpes.Length;i++)
-		{
-			if(listaDeGolpes[i].nome == nomeDoGolpe){
-				retorno = listaDeGolpes[i];
+		for(int j=0;j<nomeDoGolpe.Length;j++)
+			for(int i=0;i<listaDeGolpes.Length;i++)
+			{
+				if(listaDeGolpes[i].nome == nomeDoGolpe[j]){
+					retorno = listaDeGolpes[i];
+				}
 			}
-		}
+		return retorno;
+	}
+
+	public bool NosMeusGolpes(nomesGolpes[] esseGolpe)
+	{
+		bool retorno = false;
+		for(int i=0;i<esseGolpe.Length;i++)
+			retorno = NosMeusGolpes(esseGolpe[i]);
+
 		return retorno;
 	}
 
@@ -130,7 +140,7 @@ public class Criature : caracteristicasBasicas {
 		//int N = -1;
 		while(i<listaGolpes.Length)
 		{ 
-			if(listaGolpes[i].nivel<=nivel){
+			if(listaGolpes[i].nivel<=nivel /*&&listaGolpes[i].nivel>-1*/){
 				if(L.Count<4)
 					L.Add(listaGolpes[i]);
 				else

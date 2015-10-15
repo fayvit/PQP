@@ -66,6 +66,11 @@ public class acaoDeGolpe : MonoBehaviour {
 		case nomesGolpes.olharParalisante:
 		case nomesGolpes.rajadaDeGas:
 		case nomesGolpes.bombaDeGas:
+			
+		case nomesGolpes.sabreDeAsa:
+		case nomesGolpes.sabreDeBastao:
+		case nomesGolpes.sabreDeEspada:
+		case nomesGolpes.sabreDeNadadeira:
 			ataqueEmissor();
 		break;
 
@@ -275,8 +280,13 @@ public class acaoDeGolpe : MonoBehaviour {
 			projetilPadrao("basico","bombaDeGas","impactoDeGas",14);
 		break;
 		case nomesGolpes.bastao:
-			//ataqueComSalto("chicoteDeCalda","cuboExtraTrail");
 			impactoAtivo(nomesGolpes.bastao,"umCuboETrailMaior");
+		break;
+		case nomesGolpes.sabreDeAsa:
+		case nomesGolpes.sabreDeBastao:
+		case nomesGolpes.sabreDeEspada:
+		case nomesGolpes.sabreDeNadadeira:
+			projetilPadrao("basico","Sabre","impactoComum",0,0.45f);
 		break;
 		case nomesGolpes.cancelado:
 			umC.ataqueComPulo = false;

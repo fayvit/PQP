@@ -155,6 +155,22 @@ public class pegaUmGolpe{
 		case nomesGolpes.bastao:
 			G = new bastao();
 		break;
+		case nomesGolpes.sabreDeAsa:
+			G = new sabre();
+			G.Nome = "Sabre de Asa";
+		break;
+		case nomesGolpes.sabreDeNadadeira:
+			G = new sabre();
+			G.Nome = "Sabre de Nadadeira";
+		break;
+		case nomesGolpes.sabreDeEspada:
+			G = new sabre();
+			G.Nome = "Sabre de Espada";
+		break;
+		case nomesGolpes.sabreDeBastao:
+			G = new sabre();
+			G.Nome = "Sabre de Bastao";
+		break;
 		case nomesGolpes.nulo:
 		case nomesGolpes.cancelado:
 			G = new golpe();
@@ -223,5 +239,9 @@ public enum nomesGolpes
 	bombaDeGas,
 	rajadaDeGas,
 	cortinaDeFumaca,
-	bastao
+	bastao,
+	sabreDeAsa,
+	sabreDeBastao,
+	sabreDeNadadeira,
+	sabreDeEspada
 }

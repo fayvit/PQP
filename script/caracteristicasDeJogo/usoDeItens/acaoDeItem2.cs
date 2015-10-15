@@ -53,6 +53,7 @@ public class acaoDeItem2 : abaixoDeMenu {
 			perguntaQuem();
 		break;
 		case nomeIDitem.pergDeRajadaDeAgua:
+		case nomeIDitem.pergSabre:
 			perguntaQuem("golpe");
 		break;
 		case nomeIDitem.pergSaida:
@@ -263,44 +264,36 @@ public class acaoDeItem2 : abaixoDeMenu {
 			}
 		break;
 		case nomeIDitem.pergDeRajadaDeAgua:
-			esseUsaIsso ePerg = verifiqueEsseUsaIsso(nomeItem,quem);
+		case nomeIDitem.pergSabre:
 
+			Criature C = H.criaturesAtivos[quem];
+			nomesGolpes[] nomeDoGolpeDesseItem = golpeDesseItem();
+			nivelGolpe nG = C.GolpeNaLista(nomeDoGolpeDesseItem);
 
-			if(ePerg.eleUsa)
+		   if(nG.nome != nomesGolpes.nulo)
 			{
-				Criature C = H.criaturesAtivos[quem];
-				nomesGolpes nomeDoGolpeDesseItem = golpeDesseItem();
-				nivelGolpe nG = C.GolpeNaLista(nomeDoGolpeDesseItem);
-
-			   if(nG.nome != nomesGolpes.nulo)
+			   if(!C.NosMeusGolpes(nomeDoGolpeDesseItem))
 				{
-				   if(!C.NosMeusGolpes(nomeDoGolpeDesseItem))
-					{
-						escondeTodosMenus();
-						acaoAtual = "";
-						encontros E = GameObject.Find("Terrain").GetComponent<encontros>();
+					escondeTodosMenus();
+					acaoAtual = "";
+					encontros E = GameObject.Find("Terrain").GetComponent<encontros>();
 
-						E.aprendeuGolpeForaDoEncontro(C,nG);
-					}else
-					{
-						acaoAtual = "naoUsar";
-						mensCorrente = string.Format(textos[5],C.Nome,
-						                             item.nomeEmLinguas(nomeItem),
-						                             new pegaUmGolpe(nomeDoGolpeDesseItem).OGolpe().Nome);
-						proxAcao = "naoUsarQuemAberta";
-					}
+					E.aprendeuGolpeForaDoEncontro(C,nG);
 				}else
 				{
 					acaoAtual = "naoUsar";
-					mensCorrente = string.Format(textos[6],C.Nome, new pegaUmGolpe(nomeDoGolpeDesseItem).OGolpe().Nome);
+					mensCorrente = string.Format(textos[5],C.Nome,
+					                             item.nomeEmLinguas(nomeItem),
+					                             new pegaUmGolpe(nG.nome).OGolpe().Nome);
 					proxAcao = "naoUsarQuemAberta";
 				}
 			}else
 			{
 				acaoAtual = "naoUsar";
-				mensCorrente = textos[3]+ ePerg.oTipo +textos[4];
+				mensCorrente = string.Format(textos[6],C.Nome, new pegaUmGolpe(nG.nome).OGolpe().Nome);
 				proxAcao = "naoUsarQuemAberta";
 			}
+
 		break;
 		}
 	}
@@ -309,7 +302,7 @@ public class acaoDeItem2 : abaixoDeMenu {
 	{
 		int quem = (int)retornaMenu("perguntaQuem").escolha;
 		Criature C = H.criaturesAtivos[quem];
-		nomesGolpes nomeDoGolpeDesseItem = golpeDesseItem();
+		nomesGolpes[] nomeDoGolpeDesseItem = golpeDesseItem();
 
 		if(C.NosMeusGolpes(nomeDoGolpeDesseItem))
 		{
@@ -323,17 +316,23 @@ public class acaoDeItem2 : abaixoDeMenu {
 		}
 	}
 
-	nomesGolpes golpeDesseItem()
+	nomesGolpes[] golpeDesseItem()
 	{
-		nomesGolpes retorno = nomesGolpes.nulo ;
+		List<nomesGolpes> retorno = new List<nomesGolpes>();
 		switch(nomeItem)
 		{
 		case nomeIDitem.pergDeRajadaDeAgua:
-			retorno = nomesGolpes.rajadaDeAgua;
+			retorno.Add(nomesGolpes.rajadaDeAgua);
+		break;
+		case nomeIDitem.pergSabre:
+			retorno.Add(nomesGolpes.sabreDeBastao);
+			retorno.Add(nomesGolpes.sabreDeAsa);
+			retorno.Add(nomesGolpes.sabreDeEspada);
+			retorno.Add(nomesGolpes.sabreDeNadadeira);
 		break;
 		}
 
-		return retorno;
+		return retorno.ToArray();
 	}
 
 
@@ -374,7 +373,6 @@ public class acaoDeItem2 : abaixoDeMenu {
 			retorno.eleUsa = temOTipo(nomeTipos.Planta,quem);
 		break;
 		case nomeIDitem.aguaTonica :
-		case nomeIDitem.pergDeRajadaDeAgua:
 			retorno.oTipo = nomeTipos.Agua.ToString();
 			retorno.eleUsa = temOTipo(nomeTipos.Agua,quem);
 		break;

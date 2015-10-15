@@ -5,10 +5,17 @@ using UnityEngine;
 public class Aladegg:Criature {
 
 	public readonly nivelGolpe[] listaGolpes = {
+
+		/* Golpes aprendiveis apenas com pergaminhos */
+		
+		new nivelGolpe(-1,nomesGolpes.sabreDeAsa,0,1),
+		
+		/*********************************************
+
 		new nivelGolpe(1,nomesGolpes.chute,0,0.5f),
 		new nivelGolpe(1,nomesGolpes.ventania,0,1),
 		new nivelGolpe(2,nomesGolpes.ventosCortantes,0,0.5f),
-		new nivelGolpe(8,nomesGolpes.sobreVoo,0,1),
+		new nivelGolpe(8,nomesGolpes.sobreVoo,0,1),*/
 
 	};
 

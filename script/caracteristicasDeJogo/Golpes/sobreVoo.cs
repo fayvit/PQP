@@ -14,7 +14,7 @@ public class sobreVoo:golpe{
 		Maximo = 14;
 		Nome = "Sobre Voo";
 		DistanciaDeEmissao = 0.5f;
-		CaracGolpe = caracGolpe.colisao;
+		CaracGolpe = caracGolpe.colisaoComPow;
 		CustoPE = 1;
 
 		TempoNoDano = 0.75f;  //Tempo que o inimigo permanece na animacao de Dano

@@ -35,24 +35,24 @@ public class heroi : MonoBehaviour {
 
 		Criature  P = null;
 
-		P = new cCriature  (nomesCriatures.Izicuolo,8).criature ();
+		P = new cCriature  (nomesCriatures.Arpia,8).criature ();
 		//P.cAtributos[0].Corrente = 20;
 		//P.mNivel.XP = 149;
 
 		criaturesAtivos.Add(P);
 
 
-		P = new cCriature (nomesCriatures.DogMour,6).criature ();
+		P = new cCriature (nomesCriatures.Fajin,6).criature ();
 		//P.cAtributos[0].Corrente = 0;
 		criaturesAtivos.Add(P);
-		P = new cCriature (nomesCriatures.Xuash,8).criature ();
+		P = new cCriature (nomesCriatures.Abutre,8).criature ();
 		criaturesAtivos.Add(P);
 
-		P = new cCriature (nomesCriatures.Babaucu,5).criature ();
+		P = new cCriature (nomesCriatures.Aladegg,5).criature ();
 
 		criaturesAtivos.Add(P);
 
-		P = new cCriature (nomesCriatures.Urkan,8).criature ();
+		P = new cCriature (nomesCriatures.Onarac,8).criature ();
 
 		criaturesAtivos.Add(P);
 

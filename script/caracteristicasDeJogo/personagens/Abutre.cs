@@ -5,6 +5,13 @@ using UnityEngine;
 public class Abutre:Criature {
 
 	public readonly nivelGolpe[] listaGolpes = {
+
+		/* Golpes aprendiveis apenas com pergaminhos */
+		
+		new nivelGolpe(-1,nomesGolpes.sabreDeAsa,0,1),
+		
+		/*********************************************/
+
 		new nivelGolpe(1,nomesGolpes.bico,0,1),
 		new nivelGolpe(1,nomesGolpes.ventania,0,1),
 		new nivelGolpe(2,nomesGolpes.ventosCortantes,0,1),
@@ -28,7 +35,7 @@ public class Abutre:Criature {
 			contraTipos[cnt].Mod = caracC._caracTipo[cnt].Mod;
 		}
 
-		emissor = "Esqueleto/corpo1/";
+		emissor = "Esqueleto/corpo1/corpo2/corpo3/pescoco/cabeca";
 
 		distanciaEmissora[nomesGolpes.ventosCortantes] = 0.75f;
 
