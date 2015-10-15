@@ -10,12 +10,12 @@ public class Onarac:Criature {
 		
 		new nivelGolpe(-1,nomesGolpes.sabreDeEspada,0,1),
 		
-		/********************************************
+		/********************************************/
 
 		new nivelGolpe(1,nomesGolpes.chute,0,0.5f),
 		new nivelGolpe(1,nomesGolpes.espada,0,1),
 		new nivelGolpe(2,nomesGolpes.sobreSalto,0,0.5f),
-		new nivelGolpe(7,nomesGolpes.olharParalisante,0,0.5f),*/
+		new nivelGolpe(7,nomesGolpes.olharParalisante,0,0.5f),
 		new nivelGolpe(8,nomesGolpes.anelDoOlhar,0,0.5f),
 	};
 

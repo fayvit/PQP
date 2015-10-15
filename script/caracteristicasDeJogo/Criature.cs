@@ -140,7 +140,7 @@ public class Criature : caracteristicasBasicas {
 		//int N = -1;
 		while(i<listaGolpes.Length)
 		{ 
-			if(listaGolpes[i].nivel<=nivel /*&&listaGolpes[i].nivel>-1*/){
+			if(listaGolpes[i].nivel<=nivel && listaGolpes[i].nivel>-1){
 				if(L.Count<4)
 					L.Add(listaGolpes[i]);
 				else

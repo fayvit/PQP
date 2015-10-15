@@ -10,14 +10,14 @@ public class Fajin:Criature {
 		
 		new nivelGolpe(-1,nomesGolpes.sabreDeAsa,0,1),
 		
-		/*********************************************
+		/*********************************************/
 
 		new nivelGolpe(1,nomesGolpes.bico,0,0.75f),
 		new nivelGolpe(1,nomesGolpes.ventania,0,0.75f),
 		new nivelGolpe(2,nomesGolpes.ventosCortantes,0,1),
 		new nivelGolpe(5,nomesGolpes.anelDoOlhar,0,1),
 		new nivelGolpe(5,nomesGolpes.olharParalisante,0,0.1f),
-		new nivelGolpe(8,nomesGolpes.sobreVoo,0,0.5f),*/
+		new nivelGolpe(8,nomesGolpes.sobreVoo,0,0.5f),
 
 
 	};

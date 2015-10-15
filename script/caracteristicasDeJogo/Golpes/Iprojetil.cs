@@ -11,9 +11,12 @@ public abstract class Iprojetil: MonoBehaviour  {
 
 	protected void funcaoTrigger(Collider emQ)
 	{
+
 		if(emQ.gameObject != dono &&( emQ.tag != "cenario"|| velocidadeProjetil>0)&&emQ.tag!="desvieCamera"){
 			facaImpacto(emQ.gameObject);
 		}
+
+
 	}
 
 	protected void quaternionDeImpacto()
@@ -43,7 +46,13 @@ public abstract class Iprojetil: MonoBehaviour  {
 
 	protected void facaImpacto(GameObject emQ,bool colocaImpactos = false,bool destroiAqui = true,bool noTransform = false)
 	{
-		
+		if(emQ.gameObject.tag == "eventoComGolpe")
+		{
+			emQ.GetComponent<eventoComGolpe>().disparaEvento(
+				dono.GetComponent<acaoDeGolpe>().ativa.nomeID
+				);
+		}
+
 		GameObject impacto = GameObject.Find("elementosDoJogo").GetComponent<elementosDoJogo>().retorna(noImpacto);
 		GameObject impacto2 = null;
 
