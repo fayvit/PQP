@@ -298,7 +298,7 @@ public class acaoDeGolpe : MonoBehaviour {
 			opcoesDeCancelamento();
 
 			Destroy(this,0.25f);
-			Debug.LogWarning("Cancelando um golpe generico[!!!]");
+//			Debug.LogWarning("Cancelando um golpe generico[!!!]");
 		break;
 		
 		}

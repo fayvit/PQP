@@ -74,18 +74,6 @@ public static class saveGame {
 
 
 	public static void Load() {
-		/*
-		int i = 0;
-		foreach(var sg in LevelSerializer.SavedGames[LevelSerializer.PlayerName]) { 
-			i++;
-			Debug.Log(sg.Caption);
-			//if(GUILayout.Button(sg.Caption)) { 
-			if(LevelSerializer.SavedGames.Count == i)
-				LevelSerializer.LoadNow(sg.Data);
-			//	Time.timeScale = 1;
-			//} 
-			
-		}*/
 
 		try
 		{
@@ -97,7 +85,9 @@ public static class saveGame {
 			}
 		}catch(IOException e)
 		{
+			Debug.Log(e);
 			mensagemEmLuta mL;
+
 			if(GameObject.Find("Canvas"))
 			{
 				mL = GameObject.Find("Canvas").GetComponent<mensagemEmLuta>();

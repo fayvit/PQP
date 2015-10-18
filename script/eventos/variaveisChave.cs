@@ -182,4 +182,12 @@ public static class variaveisChave {
 		break;
 		}
 	}
+
+	public static void vericaAutoKey(string chave)
+	{
+		if(!shift.ContainsKey(chave))
+		{
+			shift.Add(chave,false);
+		}
+	}
 }

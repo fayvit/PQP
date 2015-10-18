@@ -40,21 +40,13 @@ public class abreBau : MonoBehaviour {
 		eletrica
 	}
 
-	void vericaExistenciaDeKey()
-	{
-		if(!variaveisChave.shift.ContainsKey(chaveBau))
-		{
-			variaveisChave.shift.Add(chaveBau,false);
-		}
-	}
+
 
 	// Use this for initialization
 	void Start () {
 
 		if(autoKey)
-		{
-			vericaExistenciaDeKey();
-		}
+			variaveisChave.vericaAutoKey(chaveBau);
 
 		tHeroi = GameObject.FindWithTag("Player").transform;
 		mB = tHeroi.GetComponent<movimentoBasico>();

@@ -56,7 +56,7 @@ public class Croc:Criature {
 		cAtributos[(int)nomesAtributos.PV].Taxa = 0.21f;	//Pontos de Vida
 		cAtributos[(int)nomesAtributos.PE].Taxa = 0.15f;	//pontos de Energia
 		cAtributos[(int)nomesAtributos.Poder].Taxa = 0.16f;	//pontos de Poder
-		cAtributos[(int)nomesAtributos.Forca].Taxa = 0.23f;	//pontos de Força
+		cAtributos[(int)nomesAtributos.Forca].Taxa = 0.24f;	//pontos de Força
 		cAtributos[(int)nomesAtributos.Defesa].Taxa = 0.24f;	//pontos de Defesa
 		
 		
