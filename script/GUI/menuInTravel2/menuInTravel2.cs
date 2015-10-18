@@ -393,6 +393,7 @@ public class menuInTravel2 : MonoBehaviour {
 		jogoParaSalvar.corrente.tempoDeJogo+= heroi.tempoNoJogo + Time.time;
 		float[] posicoes = {transform.position.x,transform.position.y,transform.position.z};
 		jogoParaSalvar.corrente.posicao = new List<float>(posicoes);
+		jogoParaSalvar.corrente.rotacao = new Rotacao(transform.forward);
 		jogoParaSalvar.corrente.shift = variaveisChave.shift;
 		jogoParaSalvar.corrente.contadorChave = variaveisChave.contadorChave;
 		

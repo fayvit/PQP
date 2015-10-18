@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public static class variaveisChave {
 
+	public static Dictionary<string,List<bool>> sshift = 
+	new Dictionary<string,List<bool>>()
+	{};
 	public static Dictionary<string,bool> shift = 
 		new Dictionary<string,bool>()
 		{
@@ -23,6 +26,8 @@ public static class variaveisChave {
 			{"falouComMalucoDosInsetos",false},
 			{"lutouComMalucoDosInsetos",false},
 			{"abriuCanoDeInfinity",false},
+			{"abriuCanoDeJadme",false},
+			{"abriuCanoDeMariinque",false},
 
 		// Separando Baus
 
@@ -129,6 +134,31 @@ public static class variaveisChave {
 			GameObject G = GameObject.Find("EntradaDaPiramide");
 			G.GetComponent<MeshCollider>().enabled = true;
 			G.GetComponent<mudeCena>().enabled = true;
+		}
+	}
+
+	public static void aplicaShifts()
+	{
+		Dictionary<string,bool>.KeyCollection chaves = jogoParaSalvar.corrente.shift.Keys;
+		
+		foreach(string chave in chaves)
+		{
+			if(variaveisChave.shift.ContainsKey(chave))
+			{
+				variaveisChave.shift[chave] = jogoParaSalvar.corrente.shift[chave];
+			}
+		}
+	}
+
+	public static void aplicaContadores()
+	{
+		Dictionary<string,int>.KeyCollection chaveX = jogoParaSalvar.corrente.contadorChave.Keys;
+		foreach(string chave in chaveX)
+		{
+			if(variaveisChave.contadorChave.ContainsKey(chave))
+			{
+				variaveisChave.contadorChave[chave] = jogoParaSalvar.corrente.contadorChave[chave];
+			}
 		}
 	}
 

@@ -16,7 +16,9 @@ public class tiraPoeFlare : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Vector3.Distance(tHeroi.position,transform.position)<300)
+		if(Vector3.Distance(tHeroi.position,transform.position)<300
+		   &&
+		   Mathf.Abs(tHeroi.position.y-transform.position.y)<15)
 			L.enabled = true; 
 		else
 			L.enabled = false;

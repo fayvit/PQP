@@ -52,6 +52,12 @@ public class alternanciaEmLuta : alternancia {
 
 	}
 
+	public static void pararOCriature(Transform T)
+	{
+		Animator animator = T.GetComponent<Animator>();
+		animator.SetFloat("velocidade",0);
+	}
+
 	public static void pararOCriature(GameObject G,Animator animator)
 	{
 		animator.SetFloat("velocidade",0);

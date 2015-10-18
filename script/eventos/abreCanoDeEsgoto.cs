@@ -6,25 +6,38 @@ public class abreCanoDeEsgoto : eventoComGolpe {
 	public string chaveDoCano;
 	public GameObject aSerDestruido;
 	public Transform pos1Camera;
+	public MeshCollider meshTransporte;
 
 	private pretoMorte p;
 	private bool iniciou = false;
 	private float contadorDeTempo = 0;
 	private faseDaAnima fase = faseDaAnima.iniciando;
 	private Transform tCamera;
+	private movimentoBasico mBcri;
 
 	private enum faseDaAnima
 	{
 		iniciando,
-		colocaParticulas
+		colocaParticulas,
+		destruaAsBarras,
+		retornaMovimento
 	}
 
 	// Use this for initialization
 	void Start () {
 		if(variaveisChave.shift[chaveDoCano])
 		{
+
 			if(aSerDestruido)
 				Destroy(aSerDestruido);
+
+			/*
+				O a ser destruido tambem tem esse script
+				o ativa trigger esta abaixo para nao ser chamado no aSerDestruido
+				so ser chamado no tudo do esgoto
+			 */
+
+			ativaTriggerTransporte();
 
 			Destroy(this);
 		}
@@ -40,7 +53,7 @@ public class abreCanoDeEsgoto : eventoComGolpe {
 			switch(fase)
 			{
 			case faseDaAnima.iniciando:
-				if(contadorDeTempo>1)
+				if(contadorDeTempo>2)
 				{
 					tCamera.position = pos1Camera.position;
 					tCamera.rotation = pos1Camera.rotation;
@@ -52,7 +65,32 @@ public class abreCanoDeEsgoto : eventoComGolpe {
 			case faseDaAnima.colocaParticulas:
 				if(contadorDeTempo>1)
 				{
+					Destroy(
+					Instantiate(
+						elementosDoJogo.el.retorna("particulasDoCano"),
+						aSerDestruido.transform.position,
+						Quaternion.identity),2.5f);
 
+					contadorDeTempo = 0;
+					fase = faseDaAnima.destruaAsBarras;
+				}
+			break;
+			case faseDaAnima.destruaAsBarras:
+				if(contadorDeTempo>2.5)
+				{
+					ativaTriggerTransporte();
+					variaveisChave.shift[chaveDoCano] = true;
+					aSerDestruido.GetComponent<MeshRenderer>().enabled = false;
+					fase = faseDaAnima.retornaMovimento;
+					contadorDeTempo = 0;
+				}
+			break;
+			case faseDaAnima.retornaMovimento:
+				if(contadorDeTempo>1f)
+				{
+					movimentoBasico.retornaFluxoCriature();
+					Destroy(aSerDestruido);
+					Destroy(this);
 				}
 			break;
 			}
@@ -60,8 +98,14 @@ public class abreCanoDeEsgoto : eventoComGolpe {
 	
 	}
 
+	void ativaTriggerTransporte()
+	{
+		meshTransporte.enabled = true;
+	}
+
 	public override void disparaEvento(nomesGolpes nomeDoGolpe)
 	{
+
 		if((nomeDoGolpe==nomesGolpes.sabreDeAsa
 		   ||
 		   nomeDoGolpe==nomesGolpes.sabreDeBastao
@@ -72,12 +116,19 @@ public class abreCanoDeEsgoto : eventoComGolpe {
 		   )
 		   &&
 		   !variaveisChave.shift[chaveDoCano]
+		   &&
+		   !heroi.emLuta
 		   )
 		{
+			mBcri = GameObject.Find("CriatureAtivo").GetComponent<movimentoBasico>();
+			mBcri.enabled = false;
+			alternancia.focandoHeroi();
+			movimentoBasico.pararFluxoCriature();
 			movimentoBasico.pararFluxoHeroi();
 			tCamera = Camera.main.transform;
 			p = gameObject.AddComponent<pretoMorte>();
 			iniciou = true;
-		}
+		}else if(variaveisChave.shift[chaveDoCano])
+			Destroy(this);
 	}
 }

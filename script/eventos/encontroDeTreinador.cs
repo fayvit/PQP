@@ -207,7 +207,7 @@ public class encontroDeTreinador : encontros {
 		if(encontraveis[indiceDoProx-1].nivelFixo>1)
 		{
 			inimigoUC.X = new cCriature(encontraveis[indiceDoProx-1].nome,(uint)encontraveis[indiceDoProx-1].nivelFixo).criature();
-			inimigoUC.X.cAtributos[0].Corrente = 1;
+			//inimigoUC.X.cAtributos[0].Corrente = 1;
 			IA = Inimigo.AddComponent<IA_inimigo>();
 			IA.remendoDeBug();
 		}

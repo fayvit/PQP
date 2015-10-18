@@ -87,12 +87,34 @@ public static class saveGame {
 			
 		}*/
 
-
-		if(File.Exists(Application.persistentDataPath + "/criatures.ori")) {
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/criatures.ori", FileMode.Open);
-			saveGame.savedGames = (List<jogoParaSalvar>)bf.Deserialize(file);
-			file.Close();	
+		try
+		{
+			if(File.Exists(Application.persistentDataPath + "/criatures.ori")) {
+				BinaryFormatter bf = new BinaryFormatter();
+				FileStream file = File.Open(Application.persistentDataPath + "/criatures.ori", FileMode.Open);
+				saveGame.savedGames = (List<jogoParaSalvar>)bf.Deserialize(file);
+				file.Close();	
+			}
+		}catch(IOException e)
+		{
+			mensagemEmLuta mL;
+			if(GameObject.Find("Canvas"))
+			{
+				mL = GameObject.Find("Canvas").GetComponent<mensagemEmLuta>();
+				if(mL)
+					mL.fechador();
+				mL =  GameObject.Find("Canvas").AddComponent<mensagemEmLuta>();
+			}else
+			{
+				mL = Camera.main.gameObject.GetComponent<mensagemEmLuta>();
+				if(mL)
+					mL.fechador();
+				mL =  Camera.main.gameObject.AddComponent<mensagemEmLuta>();
+			}
+			mL.positivo = true;
+			mL.posX = 0.67f;
+			mL.posY = 0.43f;
+			mL.mensagem = "Foram encontrados arquivos de Save Corrompidos";
 		}
 	}
 }

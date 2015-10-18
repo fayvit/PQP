@@ -21,8 +21,10 @@ public class mensagemEmLuta : HUDLuta {
 
 	void Start () {
 
-
-		posXrr = -2*Screen.width; 
+		if(!positivo && !emY)
+			posXrr = -2*Screen.width; 
+		else if (positivo && !emY)
+			posXrr = 2*Screen.width; 
 
 		skin = elementosDoJogo.el.skin;
 	}

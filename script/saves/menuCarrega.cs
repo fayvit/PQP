@@ -134,6 +134,12 @@ public class menuCarrega : MonoBehaviour {
 			Destroy(menu2);
 			//Application.LoadLevel("planicieDeInfinity");
 
+			if(jogoParaSalvar.corrente.shift!=null)
+				variaveisChave.aplicaShifts();
+
+			if(jogoParaSalvar.corrente.contadorChave!=null)
+				variaveisChave.aplicaContadores();
+
 			Application.LoadLevel(jogoParaSalvar.corrente.nomeCena);
 		}
 
@@ -159,22 +165,35 @@ public class menuCarrega : MonoBehaviour {
 			if(acao)
 				if(menu2 == null)
 			{
+				saveGame.Load();
+				if(saveGame.savedGames.Count>0)
+				{
 				entrandoPainel = false;
 				canvas3.SetActive(false);
 				//	acao = false;
-				saveGame.Load();
-				menu.podeMudar = false;
-				menu.entrando = false;
-				menu2 = gameObject.AddComponent<Menu>();
-				menu2.posXalvo = menu.posXalvo;
-				menu2.posYalvo = 0.01f;
-				menu2.aMenu = 0.1f*saveGame.savedGames.Count;
-				menu2.lMenu = menu.lMenu;
-				menu2.opcoes = saveGame.jogosSalvos().ToArray();
-				menu2.skin = skin;
-				menu2.destaque = destaque;
 
-				situacao = "menuCarrega";
+					menu.podeMudar = false;
+					menu.entrando = false;
+					menu2 = gameObject.AddComponent<Menu>();
+					menu2.posXalvo = menu.posXalvo;
+					menu2.posYalvo = 0.01f;
+					menu2.aMenu = 0.1f*saveGame.savedGames.Count;
+					menu2.lMenu = menu.lMenu;
+					menu2.opcoes = saveGame.jogosSalvos().ToArray();
+					menu2.skin = skin;
+					menu2.destaque = destaque;
+
+					situacao = "menuCarrega";
+				}else
+				{
+					mensagemEmLuta mL =  Camera.main.gameObject.GetComponent<mensagemEmLuta>();
+					if(mL)
+						mL.fechador();
+					mL = Camera.main.gameObject.AddComponent<mensagemEmLuta>();
+					mL.posX = 0.67f;
+					mL.positivo  = true;
+					mL.mensagem = "nao foram encontrados jogos salvos";
+				}
 			}
 
 			

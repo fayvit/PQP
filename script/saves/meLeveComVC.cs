@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class meLeveComVC : MonoBehaviour {
 	bool naoPrintou = true;
@@ -55,6 +54,7 @@ public class meLeveComVC : MonoBehaviour {
 				}
 				
 				T.position = auxInstance;
+				T.rotation = Quaternion.LookRotation(j.rotacao.forward);
 
 
 				heroi H = T.GetComponent<heroi>();
@@ -65,28 +65,7 @@ public class meLeveComVC : MonoBehaviour {
 				H.cristais = jogoParaSalvar.corrente.cristais ;
 				heroi.tempoNoJogo = jogoParaSalvar.corrente.tempoDeJogo;
 
-				if(jogoParaSalvar.corrente.shift!=null)
-				{
 
-					Dictionary<string,bool>.KeyCollection chaves = jogoParaSalvar.corrente.shift.Keys;
-
-					foreach(string chave in chaves)
-					{
-						if(variaveisChave.shift.ContainsKey(chave))
-						{
-							variaveisChave.shift[chave] = jogoParaSalvar.corrente.shift[chave];
-						}
-					}
-
-					Dictionary<string,int>.KeyCollection chaveX = jogoParaSalvar.corrente.contadorChave.Keys;
-					foreach(string chave in chaveX)
-					{
-						if(variaveisChave.contadorChave.ContainsKey(chave))
-						{
-							variaveisChave.contadorChave[chave] = jogoParaSalvar.corrente.contadorChave[chave];
-						}
-					}
-				}
 
 				Destroy(GameObject.Find("CriatureAtivo"));
 				zeraUltimoUso(H);

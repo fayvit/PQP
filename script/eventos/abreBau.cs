@@ -8,6 +8,7 @@ public class abreBau : MonoBehaviour {
 	public armadilha temArmadilha = armadilha.nao;
 	public temItem itemDoBau = new temItem(){quantidade = 2,nomeID = nomeIDitem.cristais};
 	public string chaveBau = "bauTeste";
+	public bool autoKey = false;
 
 	private bool abrindo = false;
 	private bool fechando = false;
@@ -39,8 +40,21 @@ public class abreBau : MonoBehaviour {
 		eletrica
 	}
 
+	void vericaExistenciaDeKey()
+	{
+		if(!variaveisChave.shift.ContainsKey(chaveBau))
+		{
+			variaveisChave.shift.Add(chaveBau,false);
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
+
+		if(autoKey)
+		{
+			vericaExistenciaDeKey();
+		}
 
 		tHeroi = GameObject.FindWithTag("Player").transform;
 		mB = tHeroi.GetComponent<movimentoBasico>();

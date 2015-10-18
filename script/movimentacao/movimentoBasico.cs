@@ -90,6 +90,50 @@ public class movimentoBasico :comandos {
 		}
 	}
 
+	public static void pararFluxoCriature(bool daCam = true,bool doMB = true,bool parar = true)
+	{
+		GameObject G = GameObject.Find("CriatureAtivo");
+		if(!G)
+			return;
+
+		if(doMB)
+		{
+			movimentoBasico mB = G.GetComponent<movimentoBasico>();
+			mB.enabled = false;
+			if(parar)
+				alternanciaEmLuta.pararOCriature(G.transform);
+		}
+		
+		if(daCam)
+		{
+			cameraPrincipal cam = G.GetComponent<cameraPrincipal>();
+			cam.enabled = false;
+		}
+		
+		
+	}
+
+	public static void retornaFluxoCriature(bool daCam = true,bool doMB = true)
+	{
+		GameObject G = GameObject.Find("CriatureAtivo");
+		if(!G)
+			return;
+		
+		if(doMB)
+		{
+			movimentoBasico mB = G.GetComponent<movimentoBasico>();
+			mB.enabled = true;
+		}
+		
+		if(daCam)
+		{
+			cameraPrincipal cam = G.GetComponent<cameraPrincipal>();
+			cam.enabled = true;
+		}
+		
+		
+	}
+
 	public static void pararFluxoHeroi(bool mit = true,bool daCam = true,bool doMB = true,bool parar = true)
 	{
 		GameObject G = GameObject.FindWithTag("Player");
